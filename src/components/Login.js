@@ -20,10 +20,6 @@ const Login = () => {
   //
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // Signup button
-  const handleSignup = () => {
-    navigate("/signup");
-  };
 
   // Login button
   const handleLogin = async (e) => {
@@ -41,17 +37,27 @@ const Login = () => {
     }
   };
 
+  // Signup button
+  const handleSignup = () => {
+    navigate("/signup");
+  };
+
+  // Password visibility
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <FormControl className="flex items-center justify-center min-h-screen w-full flex-col">
       <p className="text-xl font-sans">Enter your Login Credentials</p>
+
+      {/* Email */}
       <TextField
         label="Email"
         className="mb-3"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
+
+      {/* Password */}
       <TextField
         label="Password"
         type={showPassword ? "text" : "password"}
@@ -70,6 +76,7 @@ const Login = () => {
           ),
         }}
       />
+      {/* Login */}
       <Button
         variant="outlined"
         className="w-[14rem] mb-5"
@@ -78,8 +85,9 @@ const Login = () => {
       >
         Log In
       </Button>
+      {/* Create new account */}
       <Button
-        variant="contained"
+        variant="text"
         // className=""
         onClick={handleSignup}
         endIcon={<PersonAddIcon />}

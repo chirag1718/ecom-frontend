@@ -20,6 +20,7 @@ const Login = () => {
   //
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   // Login button
   const handleLogin = async (e) => {
@@ -29,11 +30,11 @@ const Login = () => {
         email,
         password,
       });
-
+      localStorage.setItem("auth-token", response.data);
       navigate("/");
-      console.log(response);
     } catch (err) {
       console.log(err.message);
+      setError(err.message);
     }
   };
 
@@ -54,16 +55,22 @@ const Login = () => {
         label="Email"
         className="mb-3"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => {
+          setEmail(e.target.value);
+          setError("");
+        }}
       />
 
       {/* Password */}
       <TextField
         label="Password"
         type={showPassword ? "text" : "password"}
-        className="mb-3 w-[14rem]"
+        className="mb-7 w-[14rem]"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => {
+          setPassword(e.target.value);
+          setError("");
+        }}
         InputProps={{
           endAdornment: (
             <InputAdornment
@@ -77,7 +84,9 @@ const Login = () => {
         }}
       />
       {/* Login */}
+      <span className="text-red-500 pb-3">{error ? <>{error}</> : null}</span>
       <Button
+        type="submit"
         variant="outlined"
         className="w-[14rem] mb-5"
         endIcon={<LoginIcon />}

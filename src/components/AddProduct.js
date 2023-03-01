@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 
 // MUI
-import { Button, InputAdornment, TextField } from "@mui/material";
+import { Button, InputAdornment, MenuItem, TextField } from "@mui/material";
 import { Stack } from "@mui/system";
 
 // Api import
 import EcomAPI from "../apis/EcomAPI";
+
+// Categories import
+import categoryOptions from "./category";
 
 const AddProduct = () => {
   //Setter function
@@ -13,6 +16,7 @@ const AddProduct = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(undefined);
+  const [category, setCategory] = useState("");
   const [error, setError] = useState("");
 
   // Form Submit
@@ -24,6 +28,7 @@ const AddProduct = () => {
       formData.append("description", description);
       formData.append("price", price);
       formData.append("file", image);
+      formData.append("category", category);
       // console.log(formData);
       const response = await EcomAPI.post("/product/addproduct", formData, {
         headers: {
@@ -36,6 +41,11 @@ const AddProduct = () => {
       setError(err.message);
     }
   };
+
+  const handleCategory = () => {
+    // categoryOptions.push()
+  };
+
   return (
     <form
       name="file"
@@ -65,6 +75,30 @@ const AddProduct = () => {
             }}
             label="Description"
           />
+          {/* Category */}
+          <TextField
+            select
+            value={category}
+            label="Category"
+            onChange={(e) => {
+              setCategory(e.target.value);
+              setError("");
+            }}
+            defaultValue="Chocolate"
+            SelectProps={{
+              multiple: true,
+              value: [],
+            }}
+          >
+            {categoryOptions.map((categories) => (
+              <MenuItem key={categories.label} value={categories.label}>
+                {categories.label}
+              </MenuItem>
+            ))}
+            {/* <Button type="submit" onClick={handleCategory}>
+              <span>Add Category</span>
+            </Button> */}
+          </TextField>
 
           {/*Price */}
           <TextField
@@ -81,7 +115,6 @@ const AddProduct = () => {
             label="Price"
           />
           <input
-            // value={image}
             onChange={(e) => {
               setImage(e.target.files[0]);
               setError("");

@@ -12,7 +12,7 @@ const AddProduct = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(undefined);
   const [error, setError] = useState("");
 
   // Form Submit
@@ -23,7 +23,8 @@ const AddProduct = () => {
       formData.append("name", name);
       formData.append("description", description);
       formData.append("price", price);
-      formData.append("image", image);
+      formData.append("file", image);
+      // console.log(formData);
       const response = await EcomAPI.post("/product/addproduct", formData, {
         headers: {
           "content-type": "multipart/form-data",
@@ -80,9 +81,9 @@ const AddProduct = () => {
             label="Price"
           />
           <input
-            value={image}
+            // value={image}
             onChange={(e) => {
-              setImage(e.target.value);
+              setImage(e.target.files[0]);
               setError("");
             }}
             type="file"

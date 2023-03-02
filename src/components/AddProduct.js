@@ -10,13 +10,15 @@ import EcomAPI from "../apis/EcomAPI";
 // Categories import
 import categoryOptions from "./category";
 
+import AddIcon from "@mui/icons-material/Add";
+
 const AddProduct = () => {
   //Setter function
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(undefined);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState({});
   const [error, setError] = useState("");
 
   // Form Submit
@@ -42,9 +44,9 @@ const AddProduct = () => {
     }
   };
 
-  const handleCategory = () => {
-    // categoryOptions.push()
-  };
+  // const handleCategory = () => {
+  //   // categoryOptions.push()
+  // };
 
   return (
     <form
@@ -85,18 +87,20 @@ const AddProduct = () => {
               setError("");
             }}
             defaultValue="Chocolate"
-            SelectProps={{
-              multiple: true,
-              value: [],
-            }}
+            helperText="Please select a category"
           >
             {categoryOptions.map((categories) => (
-              <MenuItem key={categories.label} value={categories.label}>
+              <MenuItem key={categories.value} value={categories.value}>
                 {categories.label}
               </MenuItem>
             ))}
-            {/* <Button type="submit" onClick={handleCategory}>
-              <span>Add Category</span>
+            {/* <Button
+              type="submit"
+              className="my-5"
+              // onClick={handleCategory}
+            >
+              <AddIcon />
+              Add new Category
             </Button> */}
           </TextField>
 
@@ -120,6 +124,7 @@ const AddProduct = () => {
               setError("");
             }}
             type="file"
+            className=""
           />
           <div className=" flex justify-center">
             <Button type="submit" variant="contained" onClick={handleSubmit}>

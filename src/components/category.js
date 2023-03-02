@@ -1,38 +1,38 @@
 const categoryOptions = [
   {
-    value: "chocolate",
+    value: "Chocolate",
     label: "Chocolate",
   },
   {
-    value: "biscuit",
+    value: "Biscuit",
     label: "Biscuit",
   },
   {
-    value: "brittle",
+    value: "Brittle",
     label: "Brittle",
   },
   {
-    value: "fudge",
+    value: "Fudge",
     label: "Fudge",
   },
   {
-    value: "truffles",
+    value: "Truffles",
     label: "Truffle",
   },
   {
-    value: "brownie",
+    value: "Brownie",
     label: "Brownie",
   },
   {
-    value: "blondie",
+    value: "Blondie",
     label: "Blondie",
   },
   {
-    value: "protien bar",
+    value: "Protien bar",
     label: "Protien Bar",
   },
   {
-    value: "premium collection",
+    value: "Premium collection",
     label: "Premium Collection",
   },
 ];

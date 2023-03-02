@@ -10,7 +10,9 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss')
+  ],
   corePlugins: {
     preflight: false,
   },

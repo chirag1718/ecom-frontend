@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // Api import
-import EcomAPI from "../apis/EcomAPI";
+import EcomAPI from "../../apis/EcomAPI";
 
 // Material UI import
 import { Button, FormControl, InputAdornment, TextField } from "@mui/material";

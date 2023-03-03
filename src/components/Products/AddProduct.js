@@ -5,12 +5,12 @@ import { Button, InputAdornment, MenuItem, TextField } from "@mui/material";
 import { Stack } from "@mui/system";
 
 // Api import
-import EcomAPI from "../apis/EcomAPI";
+import EcomAPI from "../../apis/EcomAPI";
 
 // Categories import
-import categoryOptions from "./category";
+import SelectOptions from "./SelectOptions";
 
-import AddIcon from "@mui/icons-material/Add";
+// import AddIcon from "@mui/icons-material/Add";
 
 const AddProduct = () => {
   //Setter function
@@ -89,7 +89,7 @@ const AddProduct = () => {
             defaultValue="Chocolate"
             helperText="Please select a category"
           >
-            {categoryOptions.map((categories) => (
+            {SelectOptions.map((categories) => (
               <MenuItem key={categories.value} value={categories.value}>
                 {categories.label}
               </MenuItem>

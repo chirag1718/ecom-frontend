@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // API import
-import EcomAPI from "../apis/EcomAPI";
+import EcomAPI from "../../apis/EcomAPI";
 
 // Matreial UI
 import { Button, FormControl, InputAdornment, TextField } from "@mui/material";
@@ -30,10 +30,10 @@ const Signup = () => {
     } catch (err) {}
   };
 
-    // Signup button
-    const handleLogin = () => {
-      navigate("/login");
-    };
+  // Signup button
+  const handleLogin = () => {
+    navigate("/login");
+  };
 
   // Password Visibility
   const [showPassword, setShowPassword] = useState(false);
@@ -88,11 +88,7 @@ const Signup = () => {
       </Button>
 
       {/* Login */}
-      <Button
-        variant="text"
-        onClick={handleLogin}
-        endIcon={<LoginIcon />}
-      >
+      <Button variant="text" onClick={handleLogin} endIcon={<LoginIcon />}>
         Log In
       </Button>
     </FormControl>

@@ -1,4 +1,4 @@
-const categoryOptions = [
+const SelectOptions = [
   {
     value: "Chocolate",
     label: "Chocolate",
@@ -36,4 +36,4 @@ const categoryOptions = [
     label: "Premium Collection",
   },
 ];
-export default categoryOptions;
+export default SelectOptions;

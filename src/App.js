@@ -4,9 +4,9 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Local Components
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import AddProduct from "./components/AddProduct";
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/Signup";
+import AddProduct from "./components/Products/AddProduct";
 function App() {
   return (
     <div className="App">

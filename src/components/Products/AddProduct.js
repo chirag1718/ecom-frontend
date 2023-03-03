@@ -20,7 +20,9 @@ const AddProduct = () => {
   const [image, setImage] = useState(undefined);
   const [category, setCategory] = useState({});
   const [error, setError] = useState("");
-
+  const success = () => {
+    return <span>Product added succesfully</span>;
+  };
   // Form Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,12 +34,13 @@ const AddProduct = () => {
       formData.append("file", image);
       formData.append("category", category);
       // console.log(formData);
-      const response = await EcomAPI.post("/product/addproduct", formData, {
+      const response = await EcomAPI.post("/product/addproducts", formData, {
         headers: {
           "content-type": "multipart/form-data",
         },
       });
       console.log(response.data);
+      success();
     } catch (err) {
       console.log(err);
       setError(err.message);

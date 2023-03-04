@@ -1,6 +1,6 @@
 const SelectOptions = [
   {
-    value: "Chocolate",
+    value: "chocolate",
     label: "Chocolate",
   },
   {
@@ -28,8 +28,8 @@ const SelectOptions = [
     label: "Blondie",
   },
   {
-    value: "Protien bar",
-    label: "Protien Bar",
+    value: "Protein bar",
+    label: "Protein Bar",
   },
   {
     value: "Premium collection",

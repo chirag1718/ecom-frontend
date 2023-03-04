@@ -24,7 +24,7 @@ function App() {
 
           {/* Products */}
           <Route exact path="/addProduct" element={<AddProduct />} />
-          <Route exact path="/productPage" element={<ProductPage />} />
+          <Route exact path="/productPage/:id" element={<ProductPage />} />
         </Routes>
       </Router>
     </div>

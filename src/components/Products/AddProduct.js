@@ -97,14 +97,14 @@ const AddProduct = () => {
                 {categories.label}
               </MenuItem>
             ))}
-            {/* <Button
+            <Button
               type="submit"
               className="my-5"
               // onClick={handleCategory}
             >
-              <AddIcon />
+              {/* <AddIcon /> */}
               Add new Category
-            </Button> */}
+            </Button>
           </TextField>
 
           {/*Price */}

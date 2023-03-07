@@ -4,35 +4,35 @@ const SelectOptions = [
     label: "Chocolate",
   },
   {
-    value: "Biscuit",
+    value: "biscuit",
     label: "Biscuit",
   },
   {
-    value: "Brittle",
+    value: "brittle",
     label: "Brittle",
   },
   {
-    value: "Fudge",
+    value: "fudge",
     label: "Fudge",
   },
   {
-    value: "Truffles",
+    value: "truffles",
     label: "Truffle",
   },
   {
-    value: "Brownie",
+    value: "brownie",
     label: "Brownie",
   },
   {
-    value: "Blondie",
+    value: "blondie",
     label: "Blondie",
   },
   {
-    value: "Protein bar",
+    value: "protein bar",
     label: "Protein Bar",
   },
   {
-    value: "Premium collection",
+    value: "premium collection",
     label: "Premium Collection",
   },
 ];

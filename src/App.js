@@ -7,7 +7,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import AddProduct from "./components/Products/AddProduct";
-import ProductPage from "./components/Products/ProductPage";
+import SingleProductPage from "./components/Products/SingleProductPage";
+import AllProductPage from "./components/Products/AllProductPage";
 function App() {
   return (
     <div className="App">
@@ -24,7 +25,16 @@ function App() {
 
           {/* Products */}
           <Route exact path="/addProduct" element={<AddProduct />} />
-          <Route exact path="/productPage/:id" element={<ProductPage />} />
+          <Route
+            exact
+            path="/singleProductPage/:id"
+            element={<SingleProductPage />}
+          />
+          <Route
+            exact
+            path="/allProductPage"
+            element={<AllProductPage />}
+          />
         </Routes>
       </Router>
     </div>

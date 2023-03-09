@@ -20,9 +20,7 @@ const AddProduct = () => {
   const [image, setImage] = useState(undefined);
   const [category, setCategory] = useState({});
   const [error, setError] = useState("");
-  const success = () => {
-    return <span>Product added succesfully</span>;
-  };
+  const [success, setSuccess] = useState("");
   // Form Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,8 +37,8 @@ const AddProduct = () => {
           "content-type": "multipart/form-data",
         },
       });
-      console.log(response.data);
-      success();
+      console.log(response.data, "Submitted successfully");
+      setSuccess("Product added Successfully");
     } catch (err) {
       console.log(err);
       setError(err.message);
@@ -67,6 +65,7 @@ const AddProduct = () => {
             onChange={(e) => {
               setName(e.target.value);
               setError("");
+              setSuccess("");
             }}
             label="Name"
           />
@@ -77,6 +76,7 @@ const AddProduct = () => {
             onChange={(e) => {
               setDescription(e.target.value);
               setError("");
+              setSuccess("");
             }}
             label="Description"
           />
@@ -88,12 +88,13 @@ const AddProduct = () => {
             onChange={(e) => {
               setCategory(e.target.value);
               setError("");
+              setSuccess("");
             }}
             defaultValue="Chocolate"
             helperText="Please select a category"
           >
             {SelectOptions.map((categories) => (
-              <MenuItem key={categories.value} value={categories.value}>
+              <MenuItem key={categories.value} value={categories.label}>
                 {categories.label}
               </MenuItem>
             ))}
@@ -113,6 +114,7 @@ const AddProduct = () => {
             onChange={(e) => {
               setPrice(e.target.value);
               setError("");
+              setSuccess("");
             }}
             InputProps={{
               startAdornment: (
@@ -125,6 +127,7 @@ const AddProduct = () => {
             onChange={(e) => {
               setImage(e.target.files[0]);
               setError("");
+              setSuccess("");
             }}
             type="file"
             className=""
@@ -134,9 +137,7 @@ const AddProduct = () => {
               Submit
             </Button>
           </div>
-          <span className="text-red-500 text-center">
-            {error ? <>{error}</> : null}
-          </span>
+          <span className="text-center">{error ? <>{error}</> : success}</span>
         </Stack>
       </Stack>
     </form>

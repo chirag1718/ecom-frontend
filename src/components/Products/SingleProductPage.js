@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import EcomAPI from "../../apis/EcomAPI";
 import { useParams } from "react-router-dom";
-import { Button } from "@mui/material";
 const ProductPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const { id } = useParams();
@@ -20,10 +19,10 @@ const ProductPage = () => {
   return (
     <>
       {selectedProduct && (
-        <div className="md:flex items-center m-auto my-8 gap-10 w-8/12">
+        <div className="md:flex items-center m-auto my-8 gap-10 w-8/12  ">
           <>
             <div
-              className="rounded-3xl flex items-center justify-center overflow-hidden md:w-[25rem] w-[30rem] h-[25rem]
+              className="rounded-3xl flex items-center justify-center overflow-hidden md:w-[25rem] m-auto w-[25rem] h-[25rem]
             "
             >
               <img
@@ -39,7 +38,7 @@ const ProductPage = () => {
             </div>
           </>
 
-          <div className="flex-col md:w-[20rem] lg:w-[30rem] w-[30rem]">
+          <div className="flex-col md:w-[20rem] lg:w-[30rem] w-[30rem] md:rounded-r-3xl">
             <p className="text-5xl">{selectedProduct.name}</p>
             <p className="text-lg">{selectedProduct.description}</p>
             <button
@@ -48,7 +47,7 @@ const ProductPage = () => {
             >
               <p className="text-sm">₹ {selectedProduct.price}</p>
             </button>
-            <p className="text-lg">{selectedProduct.category}</p>
+            <p className="text-xl underline">{selectedProduct.category}</p>
           </div>
         </div>
       )}

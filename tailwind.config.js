@@ -14,7 +14,7 @@ module.exports = {
     require('tailwindcss')
   ],
   corePlugins: {
-    preflight: false,
+    preflight: true,
   },
   important: '#root'
 };

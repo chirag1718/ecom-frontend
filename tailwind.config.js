@@ -10,11 +10,9 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [
-    require('tailwindcss')
-  ],
+  plugins: [require("tailwindcss")],
   corePlugins: {
     preflight: true,
   },
-  important: '#root'
+  important: "#root",
 };

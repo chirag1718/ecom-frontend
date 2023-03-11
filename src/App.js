@@ -7,34 +7,29 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import AddProduct from "./components/Products/AddProduct";
-import SingleProductPage from "./components/Products/SingleProductPage";
-import AllProductPage from "./components/Products/AllProductPage";
+import Product from "./components/Products/Product";
+import Products from "./components/Products/Products";
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
           {/* Home */}
-          <Route exact path="/" element={"Hello this is home page 👋🏻"} />
+          <Route index element={"Hello this is home page 👋🏻"} />
 
-          {/* Login */}
+          {/* User Login */}
           <Route exact path="/login" element={<Login />} />
 
-          {/* SignUp */}
+          {/* User SignUp */}
           <Route exact path="/signup" element={<Signup />} />
 
           {/* Products */}
-          <Route exact path="/addProduct" element={<AddProduct />} />
-          <Route
-            exact
-            path="/singleProductPage/:id"
-            element={<SingleProductPage />}
-          />
-          <Route
-            exact
-            path="/allProductPage"
-            element={<AllProductPage />}
-          />
+          {/* Add a product 👇🏻 */}
+          <Route exact path="/add-product" element={<AddProduct />} />
+          {/* Get a single product 👇🏻 */}
+          <Route exact path="/product/:id" element={<Product />} />
+          {/* Get all products 👇🏻 */}
+          <Route exact path="/products" element={<Products />} />
         </Routes>
       </Router>
     </div>

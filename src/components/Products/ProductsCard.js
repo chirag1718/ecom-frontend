@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardMedia } from "@mui/material";
 import EcomAPI from "../../apis/EcomAPI";
 
-const ProductCard = () => {
+// This is a component that provides all products card for the home component
+const ProductsCard = () => {
+  let navigate = useNavigate();
   const [selectedProduct, setSelectedProduct] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -16,20 +19,26 @@ const ProductCard = () => {
     };
     fetchData();
   }, []);
+  
+  const handleProductSelect = (id) => {
+    navigate(`/product/${id}`);
+  };
+
   return (
     <>
       {selectedProduct &&
         selectedProduct.map((product) => {
           return (
             <Card
-              className="flex flex-col w-40 h-48 mx-2 shadow-lg cursor-pointer transition-all transform hover:scale-105 ease-linear duration-200"
+              className="flex flex-col w-40 h-48 mx-2 shadow-lg cursor-pointer transition-all transform hover:scale-105 ease-linear duration-75"
               key={product._id}
+              onClick={() => handleProductSelect(product._id)}
             >
               <div className="overflow-hidden">
                 <CardMedia
                   image={product.image}
-                  // className=" w-40 h-32"
-                  className=" w-40 h-32 transition-all duration-200 ease-in transform hover:scale-105"
+                  className=" w-40 h-32"
+                  // className=" w-40 h-32 transition-all duration-75 ease-in transform hover:scale-105"
                 />
               </div>
               <CardContent className="p-2 ">
@@ -44,4 +53,4 @@ const ProductCard = () => {
   );
 };
 
-export default ProductCard;
+export default ProductsCard;

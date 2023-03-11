@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import EcomAPI from "../../apis/EcomAPI";
 import { useParams } from "react-router-dom";
-const ProductPage = () => {
+// This is component that provides a single component UI
+const Product = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const { id } = useParams();
   useEffect(() => {
@@ -55,4 +56,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default Product;

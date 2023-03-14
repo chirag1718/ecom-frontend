@@ -32,7 +32,7 @@ const AddProduct = () => {
       formData.append("file", image);
       formData.append("category", category);
       // console.log(formData);
-      const response = await EcomAPI.post("/product/addproducts", formData, {
+      const response = await EcomAPI.post("/product/add-products", formData, {
         headers: {
           "content-type": "multipart/form-data",
         },

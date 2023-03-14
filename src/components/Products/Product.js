@@ -8,7 +8,7 @@ const Product = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await EcomAPI.get(`/product/getoneproduct/${id}`);
+        const response = await EcomAPI.get(`/product/get-one-product/${id}`);
         setSelectedProduct(response.data);
         console.log(response.data);
       } catch (err) {

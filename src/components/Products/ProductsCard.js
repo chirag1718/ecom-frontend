@@ -10,7 +10,7 @@ const ProductsCard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await EcomAPI.get("/product/getallproducts");
+        const response = await EcomAPI.get("/product/get-all-products");
         console.log(response.data);
         setSelectedProduct(response.data);
       } catch (err) {

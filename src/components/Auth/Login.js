@@ -30,7 +30,8 @@ const Login = () => {
         email,
         password,
       });
-      localStorage.setItem("auth-token", response.data);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("auth-token", response.data.token);
       navigate("/");
     } catch (err) {
       console.log(err.message);

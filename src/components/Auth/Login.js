@@ -10,9 +10,11 @@ import LoginIcon from "@mui/icons-material/Login";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { useDispatch } from "react-redux";
 
 // React router import
 import { useNavigate } from "react-router-dom";
+import { setUser } from "../../redux/actions";
 const Login = () => {
   // React router
   const navigate = useNavigate();
@@ -21,6 +23,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
 
   // Login button
   const handleLogin = async (e) => {
@@ -30,8 +33,14 @@ const Login = () => {
         email,
         password,
       });
+
+      
       localStorage.setItem("user", JSON.stringify(response.data.user));
       localStorage.setItem("auth-token", response.data.token);
+      
+      const res = response.data;
+      dispatch(setUser(res));
+      
       navigate("/");
     } catch (err) {
       console.log(err.message);

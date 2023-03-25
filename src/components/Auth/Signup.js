@@ -9,6 +9,8 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/actions";
 
 const Signup = () => {
   // React router
@@ -16,6 +18,7 @@ const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -25,9 +28,15 @@ const Signup = () => {
         email,
         password,
       });
+
+      const res = response.data;
+      dispatch(setUser(res));
+
       navigate("/");
-      console.log(response);
-    } catch (err) {}
+      // console.log(response);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   // Signup button

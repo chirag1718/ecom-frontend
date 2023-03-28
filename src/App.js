@@ -15,16 +15,18 @@ import Product from "./components/Products/Product";
 import Products from "./components/Products/Products";
 import Dashboard from "./components/General/Dashboard/Dashboard";
 import { useSelector } from "react-redux";
+import Navigation from "./components/General/Navigation";
 
 function App() {
   const userData = useSelector((state) => state.authUser);
-  console.log(userData);
+  // console.log(userData);
   const usertype = userData?.user?.role;
 
   switch (usertype) {
     case "admin":
       return (
         <Router>
+          <Navigation />
           <Routes>
             <Route exact path="/admin-dashboard" element={<Dashboard />} />
             <Route
@@ -32,17 +34,18 @@ function App() {
               path="*"
               element={<Navigate to={"/admin-dashboard"} />}
             />
+            <Route exact path="/add-product" element={<AddProduct />} />
           </Routes>
         </Router>
       );
     case "user":
       return (
         <Router>
+          {/* <Navigation /> */}
           <Routes>
             <Route path="/" element={"Hello this is home page 👋🏻"} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
-            <Route exact path="/add-product" element={<AddProduct />} />
             <Route exact path="/product/:id" element={<Product />} />
             <Route exact path="/products" element={<Products />} />
           </Routes>
@@ -51,10 +54,13 @@ function App() {
     default:
       return (
         <Router>
+          {/* <Navigation /> */}
           <Routes>
             <Route path="/" element={"Hello this is home page 👋🏻"} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
+            <Route exact path="/product/:id" element={<Product />} />
+            <Route exact path="/products" element={<Products />} />
           </Routes>
         </Router>
       );

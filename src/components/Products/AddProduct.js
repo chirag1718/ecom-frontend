@@ -3,6 +3,8 @@ import React, { useState } from "react";
 // MUI
 import { Button, InputAdornment, MenuItem, TextField } from "@mui/material";
 import { Stack } from "@mui/system";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useNavigate } from "react-router-dom";
 
 // Api import
 import EcomAPI from "../../apis/EcomAPI";
@@ -45,102 +47,114 @@ const AddProduct = () => {
     }
   };
 
-  // const handleCategory = () => {
-  //   // categoryOptions.push()
-  // };
+  let navigate = useNavigate();
+
+  const handleBackToDashboard = () => {
+    navigate("/admin-dashboard");
+  };
 
   return (
-    <form
-      name="file"
-      method="post"
-      encType="multipart/form-data"
-      className="mt-5"
-      action="/product/addProduct"
-    >
-      <Stack spacing={4} className="mx-4">
-        <Stack direction="column" spacing={4}>
-          {/* Name */}
-          <TextField
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-              setError("");
-              setSuccess("");
-            }}
-            label="Name"
-          />
+    <div>
+      <form
+        name="file"
+        method="post"
+        encType="multipart/form-data"
+        className="mt-5"
+        action="/product/addProduct"
+      >
+        <Stack spacing={4} className="mx-4">
+          <Stack direction="column" spacing={4}>
+            {/* Name */}
+            <TextField
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+                setError("");
+                setSuccess("");
+              }}
+              label="Name"
+            />
 
-          {/* Description */}
-          <TextField
-            value={description}
-            onChange={(e) => {
-              setDescription(e.target.value);
-              setError("");
-              setSuccess("");
-            }}
-            label="Description"
-          />
-          {/* Category */}
-          <TextField
-            select
-            value={category}
-            label="Category"
-            onChange={(e) => {
-              setCategory(e.target.value);
-              setError("");
-              setSuccess("");
-            }}
-            defaultValue="Chocolate"
-            helperText="Please select a category"
-          >
-            {SelectOptions.map((categories) => (
-              <MenuItem key={categories.value} value={categories.label}>
-                {categories.label}
-              </MenuItem>
-            ))}
-            <Button
-              type="submit"
-              className="my-5"
-              // onClick={handleCategory}
+            {/* Description */}
+            <TextField
+              value={description}
+              onChange={(e) => {
+                setDescription(e.target.value);
+                setError("");
+                setSuccess("");
+              }}
+              label="Description"
+            />
+            {/* Category */}
+            <TextField
+              select
+              value={category}
+              label="Category"
+              onChange={(e) => {
+                setCategory(e.target.value);
+                setError("");
+                setSuccess("");
+              }}
+              defaultValue="Chocolate"
+              helperText="Please select a category"
             >
-              {/* <AddIcon /> */}
-              Add new Category
-            </Button>
-          </TextField>
+              {SelectOptions.map((categories) => (
+                <MenuItem key={categories.value} value={categories.label}>
+                  {categories.label}
+                </MenuItem>
+              ))}
+              <Button
+                type="submit"
+                className="my-5"
+                // onClick={handleCategory}
+              >
+                {/* <AddIcon /> */}
+                Add new Category
+              </Button>
+            </TextField>
 
-          {/*Price */}
-          <TextField
-            value={price}
-            onChange={(e) => {
-              setPrice(e.target.value);
-              setError("");
-              setSuccess("");
-            }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">₹</InputAdornment>
-              ),
-            }}
-            label="Price"
-          />
-          <input
-            onChange={(e) => {
-              setImage(e.target.files[0]);
-              setError("");
-              setSuccess("");
-            }}
-            type="file"
-            className=""
-          />
-          <div className=" flex justify-center">
-            <Button type="submit" variant="contained" onClick={handleSubmit}>
-              Submit
-            </Button>
-          </div>
-          <span className="text-center">{error ? <>{error}</> : success}</span>
+            {/*Price */}
+            <TextField
+              value={price}
+              onChange={(e) => {
+                setPrice(e.target.value);
+                setError("");
+                setSuccess("");
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">₹</InputAdornment>
+                ),
+              }}
+              label="Price"
+            />
+            <input
+              onChange={(e) => {
+                setImage(e.target.files[0]);
+                setError("");
+                setSuccess("");
+              }}
+              type="file"
+              className=""
+            />
+            <div className=" flex justify-center">
+              <Button type="submit" variant="contained" onClick={handleSubmit}>
+                Submit
+              </Button>
+            </div>
+            <span className="text-center">
+              {error ? <>{error}</> : success}
+            </span>
+          </Stack>
         </Stack>
-      </Stack>
-    </form>
+      </form>
+      <div className="absolute bottom-4 left-4">
+        <Button variant="outlined" className="space-x-2" onClick={handleBackToDashboard}>
+          <ArrowBackIcon />
+          <span>Dashboard</span>
+        </Button>
+      </div>
+    </div>
   );
 };
 

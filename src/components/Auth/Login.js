@@ -58,7 +58,7 @@ const Login = () => {
 
   return (
     <FormControl className="flex items-center justify-center min-h-screen w-full flex-col">
-      <p className="text-xl font-sans">Enter your Login Credentials</p>
+      <p className="text-xl font-sans mb-5">Enter your Login Credentials</p>
 
       {/* Email */}
       <TextField

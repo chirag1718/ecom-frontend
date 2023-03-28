@@ -4,7 +4,7 @@ import { Button, Stack, Toolbar, Typography } from "@mui/material";
 
 const Navigation = () => {
   return (
-    <div>
+    <>
       <AppBar className="bg-stone-800">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -17,7 +17,7 @@ const Navigation = () => {
           </Stack>
         </Toolbar>
       </AppBar>
-    </div>
+    </>
   );
 };
 

@@ -6,14 +6,22 @@ import ProductTable from "./ProductTable";
 const Dashboard = () => {
   const navigate = useNavigate();
   const handleAddProduct = () => {
-    navigate("/add-product")
-  }
+    navigate("/add-product");
+  };
   return (
-    <div className="flex items-center justify-center my-3 flex-col">
-      <ProductTable />
-      <Button type="submit" className="mt-3" variant="outlined"
-      onClick={handleAddProduct}>Add Product</Button>
-    </div>
+    <>
+      <div className="flex items-center justify-center my-3 flex-col">
+        <ProductTable />
+      </div>
+      {/* <Button
+        type="submit"
+        className="mt-3 absolute "
+        variant="outlined"
+        onClick={handleAddProduct}
+      >
+        Add Product
+      </Button> */}
+    </>
   );
 };
 

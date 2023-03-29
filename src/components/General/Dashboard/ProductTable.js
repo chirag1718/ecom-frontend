@@ -16,6 +16,7 @@ import EcomAPI from "../../../apis/EcomAPI";
 const ProductTable = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   useEffect(() => {
+    console.log("API Init");
     const fetchData = async () => {
       try {
         const response = await EcomAPI.get("/product/get-all-products");
@@ -30,7 +31,7 @@ const ProductTable = () => {
 
   return (
     <div className="">
-      <TableContainer className="inline-flex h-[500px] scroll-smooth border-2 rounded-lg w-[1300px] scrollbar-hide overflow-scroll mt-20 ">
+      <TableContainer className="inline-flex h-[500px] scroll-smooth border-2 rounded-lg w-[1300px] scrollbar-hide overflow-scroll">
         <Table stickyHeader>
           <TableHead className="">
             <TableRow>
@@ -50,10 +51,7 @@ const ProductTable = () => {
                 Quantity
               </TableCell>
               <TableCell className="text-base " align="center">
-                Edit
-              </TableCell>
-              <TableCell className="text-base " align="center">
-                Delete
+                Actions
               </TableCell>
             </TableRow>
           </TableHead>
@@ -73,12 +71,10 @@ const ProductTable = () => {
                     <TableCell align="center">{product.category}</TableCell>
                     <TableCell align="center">₹ {product.price}</TableCell>
                     <TableCell align="center">NA</TableCell>
-                    <TableCell align="center">
+                    <TableCell align="center" className="space-x-3">
                       <Button>
                         <EditIcon className="" />
                       </Button>
-                    </TableCell>
-                    <TableCell align="center">
                       <Button color="error">
                         <DeleteIcon />
                       </Button>

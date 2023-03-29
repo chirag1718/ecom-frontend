@@ -11,13 +11,18 @@ const Navigation = () => {
   const handleAddProduct = () => {
     navigate("/add-product");
   };
+
+  const handleBackToDashboard = () => {
+    navigate("/admin-dashboard");
+  };
+
   switch (userType) {
     case "user":
       return (
         <>
           <AppBar className="bg-stone-800">
             <Toolbar>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              <Typography variant="h6" component="div">
                 Elaichi kitchen
               </Typography>
               <Stack direction="row" spacing={2}>
@@ -33,13 +38,26 @@ const Navigation = () => {
       return (
         <AppBar className="bg-stone-800">
           <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+              onClick={handleBackToDashboard}
+              className="cursor-pointer"
+            >
               Elaichi kitchen
             </Typography>
             <Stack direction="row" spacing={2}>
-              <Button onClick={handleAddProduct} color="inherit" variant="contained" className="bg-green-900">
-                Add Product
-              </Button>
+              {!window.location.pathname.includes("add-product") && (
+                <Button
+                  onClick={handleAddProduct}
+                  color="inherit"
+                  variant="contained"
+                  className="bg-green-900"
+                >
+                  Add Product
+                </Button>
+              )}
             </Stack>
           </Toolbar>
         </AppBar>

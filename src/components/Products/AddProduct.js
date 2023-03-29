@@ -3,8 +3,6 @@ import React, { useState } from "react";
 // MUI
 import { Button, InputAdornment, MenuItem, TextField } from "@mui/material";
 import { Stack } from "@mui/system";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useNavigate } from "react-router-dom";
 
 // Api import
 import EcomAPI from "../../apis/EcomAPI";
@@ -46,20 +44,12 @@ const AddProduct = () => {
       setError(err.message);
     }
   };
-
-  let navigate = useNavigate();
-
-  const handleBackToDashboard = () => {
-    navigate("/admin-dashboard");
-  };
-
   return (
-    <div>
+    <div className="">
       <form
         name="file"
         method="post"
         encType="multipart/form-data"
-        className="mt-5"
         action="/product/addProduct"
       >
         <Stack spacing={4} className="mx-4">
@@ -148,12 +138,6 @@ const AddProduct = () => {
           </Stack>
         </Stack>
       </form>
-      <div className="absolute bottom-4 left-4">
-        <Button variant="outlined" className="space-x-2" onClick={handleBackToDashboard}>
-          <ArrowBackIcon />
-          <span>Dashboard</span>
-        </Button>
-      </div>
     </div>
   );
 };

@@ -1,19 +1,28 @@
 import React from "react";
 import AppBar from "@mui/material/AppBar";
 import { Button, Stack, Toolbar, Typography } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { logOut } from "../../redux/actions/index";
 
 const Navigation = () => {
   const userData = useSelector((state) => state.authUser);
   const userType = userData?.user?.role;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const handleAddProduct = () => {
     navigate("/add-product");
   };
 
   const handleBackToDashboard = () => {
     navigate("/admin-dashboard");
+  };
+
+  const handleLogin = () => {
+    const user = localStorage.removeItem("user");
+    const token = localStorage.removeItem("auth-token");
+    dispatch(logOut({ user, token }));
   };
 
   switch (userType) {
@@ -56,6 +65,11 @@ const Navigation = () => {
                   className="bg-green-900"
                 >
                   Add Product
+                </Button>
+              )}
+              {!window.location.pathname.includes("add-product") && (
+                <Button onClick={handleLogin} color="error" variant="contained">
+                  Log Out
                 </Button>
               )}
             </Stack>

@@ -5,7 +5,7 @@ export const setUser = (x) => {
   };
 };
 
-export const logOut = (y) => {
+export const logOut = () => {
   return {
     type: "LOG_OUT",
   };

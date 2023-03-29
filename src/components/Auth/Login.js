@@ -34,13 +34,12 @@ const Login = () => {
         password,
       });
 
-      
       localStorage.setItem("user", JSON.stringify(response.data.user));
       localStorage.setItem("auth-token", response.data.token);
-      
+
       const res = response.data;
       dispatch(setUser(res));
-      
+
       navigate("/");
     } catch (err) {
       console.log(err.message);
@@ -57,7 +56,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <FormControl className="flex items-center justify-center min-h-screen w-full flex-col">
+    <FormControl className="flex items-center justify-center flex-col h-[80vh]">
       <p className="text-xl font-sans mb-5">Enter your Login Credentials</p>
 
       {/* Email */}
@@ -69,7 +68,7 @@ const Login = () => {
           setEmail(e.target.value);
           setError("");
         }}
-      />
+        />
 
       {/* Password */}
       <TextField
@@ -87,7 +86,7 @@ const Login = () => {
               className="cursor-pointer"
               position="end"
               onClick={() => setShowPassword(!showPassword)}
-            >
+              >
               {showPassword ? <VisibilityOff /> : <Visibility />}
             </InputAdornment>
           ),
@@ -101,7 +100,7 @@ const Login = () => {
         className="w-[14rem] mb-5"
         endIcon={<LoginIcon />}
         onClick={handleLogin}
-      >
+        >
         Log In
       </Button>
       {/* Create new account */}

@@ -47,7 +47,7 @@ const Signup = () => {
   // Password Visibility
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <FormControl className="flex items-center justify-center min-h-screen w-full flex-col">
+    <FormControl className="flex items-center justify-center flex-col h-[80vh]">
       <p className="text-xl font-sans">Enter your Credentials</p>
 
       {/* First Name */}

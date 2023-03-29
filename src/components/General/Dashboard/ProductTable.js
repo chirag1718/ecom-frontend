@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Button,
   Table,
@@ -9,12 +11,20 @@ import {
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import React, { useEffect, useState } from "react";
 // Api import
 import EcomAPI from "../../../apis/EcomAPI";
 
 const ProductTable = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const navigate = useNavigate();
+
+  const handleEdit = () => {
+    navigate("/add-product");
+  };
+  const handleDelete = () => {
+    navigate("");
+  };
+
   useEffect(() => {
     console.log("API Init");
     const fetchData = async () => {
@@ -72,10 +82,12 @@ const ProductTable = () => {
                     <TableCell align="center">₹ {product.price}</TableCell>
                     <TableCell align="center">NA</TableCell>
                     <TableCell align="center" className="space-x-3">
-                      <Button>
+                      {/* Edit */}
+                      <Button onClick={handleEdit}>
                         <EditIcon className="" />
                       </Button>
-                      <Button color="error">
+                      {/* Delete */}
+                      <Button color="error" onClick={handleDelete}>
                         <DeleteIcon />
                       </Button>
                     </TableCell>

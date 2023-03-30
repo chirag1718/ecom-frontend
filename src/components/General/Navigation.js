@@ -19,10 +19,14 @@ const Navigation = () => {
     navigate("/admin-dashboard");
   };
 
-  const handleLogin = () => {
+  const handleLogOut = () => {
     const user = localStorage.removeItem("user");
     const token = localStorage.removeItem("auth-token");
     dispatch(logOut({ user, token }));
+  };
+
+  const handleLogIn = () => {
+    navigate("/login");
   };
 
   switch (userType) {
@@ -31,13 +35,27 @@ const Navigation = () => {
         <>
           <AppBar className="bg-stone-800">
             <Toolbar>
-              <Typography variant="h6" component="div">
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1 }}
+                onClick={() => navigate("/")}
+                className="cursor-pointer"
+              >
                 Elaichi kitchen
               </Typography>
               <Stack direction="row" spacing={2}>
                 <Button color="inherit">Categories</Button>
                 <Button color="inherit">About</Button>
                 <Button color="inherit">Contact</Button>
+                <Button
+                  color="inherit"
+                  variant="text"
+                  className="flex justify-evenly"
+                  onClick={handleLogOut}
+                >
+                  Log out
+                </Button>
               </Stack>
             </Toolbar>
           </AppBar>
@@ -68,7 +86,11 @@ const Navigation = () => {
                 </Button>
               )}
               {!window.location.pathname.includes("add-product") && (
-                <Button onClick={handleLogin} color="error" variant="contained">
+                <Button
+                  color="error"
+                  variant="contained"
+                  onClick={handleLogOut}
+                >
                   Log Out
                 </Button>
               )}
@@ -81,13 +103,22 @@ const Navigation = () => {
         <>
           <AppBar className="bg-stone-800">
             <Toolbar>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1 }}
+                onClick={() => navigate("/")}
+                className="cursor-pointer"
+              >
                 Elaichi kitchen
               </Typography>
               <Stack direction="row" spacing={2}>
                 <Button color="inherit">Categories</Button>
                 <Button color="inherit">About</Button>
                 <Button color="inherit">Contact</Button>
+                <Button color="inherit" variant="text" onClick={handleLogIn}>
+                  Log In
+                </Button>
               </Stack>
             </Toolbar>
           </AppBar>

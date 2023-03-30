@@ -30,6 +30,7 @@ const EditProduct = () => {
         setSelectedProduct(response.data);
         setName(response.data.name);
         setDescription(response.data.description);
+        setImage(response.data.image);
         setCategory(response.data.category);
         setPrice(response.data.price);
         console.log(response.data);
@@ -91,11 +92,7 @@ const EditProduct = () => {
                   {categories.label}
                 </MenuItem>
               ))}
-              <Button
-                type="submit"
-                className="my-5"
-                // onClick={handleCategory}
-              >
+              <Button type="submit" className="my-5">
                 {/* <AddIcon /> */}
                 Add new Category
               </Button>

@@ -1,24 +1,17 @@
-import React, { useState } from "react";
-
-// MUI
 import {
   Button,
   InputAdornment,
   MenuItem,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
-import { Stack } from "@mui/system";
-
-// Api import
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import EcomAPI from "../../apis/EcomAPI";
-
-// Categories import
 import SelectOptions from "./SelectOptions";
 
-// import AddIcon from "@mui/icons-material/Add";
-
-const AddProduct = () => {
+const EditProduct = () => {
   //Setter function
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -27,39 +20,35 @@ const AddProduct = () => {
   const [category, setCategory] = useState({});
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  // Form Submit
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("description", description);
-      formData.append("price", price);
-      formData.append("file", image);
-      formData.append("category", category);
-      // console.log(formData);
-      const response = await EcomAPI.post("/product/add-products", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-        },
-      });
-      console.log(response.data, "Submitted successfully");
-      setSuccess("Product added Successfully");
-    } catch (err) {
-      console.log(err);
-      setError(err.message);
-    }
-  };
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const { id } = useParams();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await EcomAPI.get(`/product/get-one-product/${id}`);
+        setSelectedProduct(response.data);
+        setName(response.data.name);
+        setDescription(response.data.description);
+        setCategory(response.data.category);
+        setPrice(response.data.price);
+        console.log(response.data);
+      } catch (err) {
+        console.log(err, "This is error");
+      }
+    };
+    fetchData();
+  }, [id]);
   return (
     <div className="">
       <Typography variant="h6" component="div" align="center">
-        Add Product
+        Edit Product
       </Typography>
       <form
         name="file"
         method="post"
         encType="multipart/form-data"
-        action="/product/add-product"
+        action="/product/edit-product"
       >
         <Stack spacing={4} className="mx-4">
           <Stack direction="column" spacing={4}>
@@ -137,7 +126,11 @@ const AddProduct = () => {
               className=""
             />
             <div className=" flex justify-center">
-              <Button type="submit" variant="contained" onClick={handleSubmit}>
+              <Button
+                type="submit"
+                variant="contained"
+                // onClick={}
+              >
                 Submit
               </Button>
             </div>
@@ -151,4 +144,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default EditProduct;

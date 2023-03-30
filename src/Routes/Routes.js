@@ -11,6 +11,7 @@ import Dashboard from "../components/General/Dashboard/Dashboard";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "../components/General/Home";
 import { setUser } from "../redux/actions/index";
+import EditProduct from "../components/Products/EditProduct";
 
 function AppRoutes() {
   const userData = useSelector((state) => state.authUser);
@@ -33,6 +34,7 @@ function AppRoutes() {
           <Routes>
             <Route exact path="/admin-dashboard" element={<Dashboard />} />
             <Route exact path="/add-product" element={<AddProduct />} />
+            <Route exact path="/edit-product/:id" element={<EditProduct />} />
             <Route
               exact
               path="*"

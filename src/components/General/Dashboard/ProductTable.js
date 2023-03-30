@@ -18,26 +18,27 @@ const ProductTable = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const navigate = useNavigate();
 
-  const handleEdit = () => {
-    navigate("/add-product");
-  };
   const handleDelete = () => {
     navigate("");
   };
 
   useEffect(() => {
-    console.log("API Init");
     const fetchData = async () => {
       try {
         const response = await EcomAPI.get("/product/get-all-products");
         setSelectedProduct(response.data);
-        console.log(response);
+        // console.log(response);
       } catch (err) {
         console.log(err);
       }
     };
     fetchData();
   }, []);
+
+  const handleEdit = (id, e) => {
+    e.stopPropagation();
+    navigate(`/edit-product/${id}`);
+  };
 
   return (
     <div className="">
@@ -83,7 +84,7 @@ const ProductTable = () => {
                     <TableCell align="center">NA</TableCell>
                     <TableCell align="center" className="space-x-3">
                       {/* Edit */}
-                      <Button onClick={handleEdit}>
+                      <Button onClick={(e) => handleEdit(product._id, e)}>
                         <EditIcon className="" />
                       </Button>
                       {/* Delete */}

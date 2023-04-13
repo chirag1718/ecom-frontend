@@ -7,11 +7,12 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import EcomAPI from "../../apis/EcomAPI";
 import SelectOptions from "./SelectOptions";
 
 const EditProduct = () => {
+  let navigate = useNavigate();
   //Setter function
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -40,6 +41,42 @@ const EditProduct = () => {
     };
     fetchData();
   }, [id]);
+
+  // redirect user to home page after product update
+  const redirect = () => {
+    let time = setTimeout(function () {
+      navigate("/");
+      window.clearTimeout(time);
+    }, 2000);
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("file", image);
+      formData.append("category", category);
+
+      const updatedProduct = await EcomAPI.put(
+        `/product/update-product/${id}`,
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(updatedProduct, "Product updated successfully");
+      setSuccess("Product Updated Succesfully");
+      redirect();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
   return (
     <div className="">
       <Typography variant="h6" component="div" align="center">
@@ -121,13 +158,10 @@ const EditProduct = () => {
               }}
               type="file"
               className=""
+              name="uImage"
             />
             <div className=" flex justify-center">
-              <Button
-                type="submit"
-                variant="contained"
-                // onClick={}
-              >
+              <Button type="submit" variant="contained" onClick={handleUpdate}>
                 Submit
               </Button>
             </div>

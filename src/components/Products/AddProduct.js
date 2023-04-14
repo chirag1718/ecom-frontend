@@ -16,9 +16,11 @@ import EcomAPI from "../../apis/EcomAPI";
 // Categories import
 import SelectOptions from "./SelectOptions";
 
-// import AddIcon from "@mui/icons-material/Add";
-
+// React reouter
+import { useNavigate } from "react-router-dom";
 const AddProduct = () => {
+  let navigate = useNavigate();
+
   //Setter function
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -27,6 +29,12 @@ const AddProduct = () => {
   const [category, setCategory] = useState({});
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const redirect = () => {
+    let time = setTimeout(function () {
+      navigate("/");
+      window.clearTimeout(time);
+    }, 3000);
+  };
   // Form Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,6 +53,7 @@ const AddProduct = () => {
       });
       console.log(response.data, "Submitted successfully");
       setSuccess("Product added Successfully");
+      redirect();
     } catch (err) {
       console.log(err);
       setError(err.message);

@@ -60,7 +60,7 @@ const EditProduct = () => {
       formData.append("file", image);
       formData.append("category", category);
 
-      const updatedProduct = await EcomAPI.put(
+      const productUpdate = await EcomAPI.put(
         `/product/update-product/${id}`,
         formData,
         {
@@ -69,14 +69,14 @@ const EditProduct = () => {
           },
         }
       );
-      console.log(updatedProduct, "Product updated successfully");
+      console.log(productUpdate, "Product updated successfully");
       setSuccess("Product Updated Succesfully");
       redirect();
     } catch (err) {
       console.log(err);
     }
   };
-  
+
   return (
     <div className="">
       <Typography variant="h6" component="div" align="center">

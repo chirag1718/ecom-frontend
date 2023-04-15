@@ -27,7 +27,7 @@ const Product = () => {
             "
             >
               <img
-                src={selectedProduct.image}
+                src={selectedProduct.image.url}
                 style={{
                   height: "400px",
                   width: "400px",

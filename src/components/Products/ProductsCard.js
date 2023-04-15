@@ -36,7 +36,7 @@ const ProductsCard = () => {
             >
               <div className="overflow-hidden">
                 <CardMedia
-                  image={product.image}
+                  image={product.image.url}
                   className=" w-40 h-32"
                   // className=" w-40 h-32 transition-all duration-75 ease-in transform hover:scale-105"
                 />

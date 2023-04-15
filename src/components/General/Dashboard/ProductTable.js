@@ -25,6 +25,7 @@ const ProductTable = () => {
       try {
         const response = await EcomAPI.get("/product/get-all-products");
         setSelectedProduct(response.data);
+        console.log(response.data);
       } catch (err) {
         console.log(err);
       }
@@ -39,10 +40,9 @@ const ProductTable = () => {
 
   const handleDelete = async (id, e) => {
     e.stopPropagation();
-    console.log(selectedProduct);
+    // console.log(selectedProduct);
     try {
-      const response = await EcomAPI.delete(`/product/delete?`);
-      console.log(response.data);
+      const response = await EcomAPI.delete(`/product/delete/${id}`);
       setSelectedProduct(selectedProduct.filter((a) => a._id !== id));
       console.log(response, "product deleted succesfully");
     } catch (err) {
@@ -85,7 +85,7 @@ const ProductTable = () => {
                       {/* <Tooltip placement="right" title={product.name}> */}
                       <img
                         className="h-28 w-28 justify-center m-auto shadow-lg"
-                        src={product.image}
+                        src={product.image.url}
                         alt=""
                       />
                       {/* </Tooltip> */}

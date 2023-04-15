@@ -33,7 +33,7 @@ const AddProduct = () => {
     let time = setTimeout(function () {
       navigate("/");
       window.clearTimeout(time);
-    }, 3000);
+    }, 1000);
   };
   // Form Submit
   const handleSubmit = async (e) => {

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 // MUI
 import {
   Button,
+  Checkbox,
   InputAdornment,
   MenuItem,
   TextField,
@@ -27,6 +28,7 @@ const AddProduct = () => {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(undefined);
   const [category, setCategory] = useState({});
+  const [isHero, setIsHero] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const redirect = () => {
@@ -34,6 +36,11 @@ const AddProduct = () => {
       navigate("/");
       window.clearTimeout(time);
     }, 1000);
+  };
+
+  const handleHeroToggle = (e) => {
+    setIsHero((isHero) => !isHero);
+    console.log(setIsHero, "this is hero product");
   };
   // Form Submit
   const handleSubmit = async (e) => {
@@ -45,6 +52,7 @@ const AddProduct = () => {
       formData.append("price", price);
       formData.append("file", image);
       formData.append("category", category);
+      formData.append("isHero", isHero);
       // console.log(formData);
       const response = await EcomAPI.post("/product/add-products", formData, {
         headers: {
@@ -136,24 +144,33 @@ const AddProduct = () => {
               }}
               label="Price"
             />
-            <input
-              onChange={(e) => {
-                setImage(e.target.files[0]);
-                setError("");
-                setSuccess("");
-              }}
-              type="file"
-              className=""
-            />
-            <div className=" flex justify-center">
-              <Button type="submit" variant="contained" onClick={handleSubmit}>
-                Submit
-              </Button>
-            </div>
-            <span className="text-center">
-              {error ? <>{error}</> : success}
-            </span>
           </Stack>
+
+          <div>
+            Hero Product
+            <Checkbox
+              color="success"
+              value={isHero}
+              onChange={handleHeroToggle}
+            />
+          </div>
+
+          <input
+            onChange={(e) => {
+              setImage(e.target.files[0]);
+              setError("");
+              setSuccess("");
+            }}
+            type="file"
+            className=""
+          />
+
+          <div className="flex justify-center">
+            <Button type="submit" variant="contained" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </div>
+          <span className="text-center">{error ? <>{error}</> : success}</span>
         </Stack>
       </form>
     </div>

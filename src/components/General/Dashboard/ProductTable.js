@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  Button,
+  IconButton,
   Table,
   TableBody,
   TableCell,
@@ -97,18 +97,21 @@ const ProductTable = () => {
                     <TableCell align="center" className="space-x-3">
                       {/* Edit */}
                       <Tooltip title="Edit" arrow>
-                        <Button onClick={(e) => handleEdit(product._id, e)}>
+                        <IconButton
+                          color="primary"
+                          onClick={(e) => handleEdit(product._id, e)}
+                        >
                           <EditIcon className="" />
-                        </Button>
+                        </IconButton>
                       </Tooltip>
                       {/* Delete */}
                       <Tooltip title="Delete" arrow>
-                        <Button
+                        <IconButton
                           color="error"
                           onClick={(e) => handleDelete(product._id, e)}
                         >
                           <DeleteIcon />
-                        </Button>
+                        </IconButton>
                       </Tooltip>
                     </TableCell>
                   </TableRow>

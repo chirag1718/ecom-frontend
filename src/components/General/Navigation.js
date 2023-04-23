@@ -15,6 +15,9 @@ const Navigation = () => {
     navigate("/add-product");
   };
 
+  const handleBanner = () => {
+    navigate("/add-banner");
+  };
   const handleBackToDashboard = () => {
     navigate("/admin-dashboard");
   };
@@ -80,9 +83,19 @@ const Navigation = () => {
                   onClick={handleAddProduct}
                   color="inherit"
                   variant="contained"
-                  className="bg-green-900"
+                  className="bg-green-900 normal-case"
                 >
                   Add Product
+                </Button>
+              )}
+              {!window.location.pathname.includes("add-product") && (
+                <Button
+                  onClick={handleBanner}
+                  color="inherit"
+                  variant="contained"
+                  className="bg-green-900 normal-case"
+                >
+                  Add Banner
                 </Button>
               )}
               {!window.location.pathname.includes("add-product") && (
@@ -90,6 +103,7 @@ const Navigation = () => {
                   color="error"
                   variant="contained"
                   onClick={handleLogOut}
+                  className="normal-case"
                 >
                   Log Out
                 </Button>

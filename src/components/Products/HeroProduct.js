@@ -24,7 +24,7 @@ const HeroProduct = () => {
   };
   return (
     // NOTE:{
-    // Requirement => In heroProduct there will be 4 product which will be selected as Hero Product and out of those product every product will be render in a randomized manner like each and every product 
+    // Requirement => In heroProduct there will be 4 product which will be selected as Hero Product and out of those product every product will be render in a randomized manner like each and every product
     // }
     <div className="my-10 flex justify-center">
       {selectedProduct &&
@@ -41,7 +41,6 @@ const HeroProduct = () => {
                     style={{
                       height: "400px",
                       width: "400px",
-                      rotate: "-90deg",
                     }}
                     className="transition-all duration-300 ease-in transform hover:scale-110"
                     alt=""

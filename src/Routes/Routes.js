@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Login from "../components/Auth/Login";
 import Signup from "../components/Auth/Signup";
 import AddProduct from "../components/Products/AddProduct";
+import AddBanner from "../components/General/Banner/AddBanner";
 import Product from "../components/Products/Product";
 import Products from "../components/Products/Products";
 import Dashboard from "../components/General/Dashboard/Dashboard";
@@ -35,6 +36,7 @@ function AppRoutes() {
             <Route exact path="/admin-dashboard" element={<Dashboard />} />
             <Route exact path="/add-product" element={<AddProduct />} />
             <Route exact path="/edit-product/:id" element={<EditProduct />} />
+            <Route exacr path="/add-banner" element={<AddBanner />} />
             <Route
               exact
               path="*"

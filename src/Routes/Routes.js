@@ -31,12 +31,12 @@ function AppRoutes() {
   switch (usertype) {
     case "admin":
       return (
-        <div className="mt-20">
+        <div className="mt-28">
           <Routes>
             <Route exact path="/admin-dashboard" element={<Dashboard />} />
             <Route exact path="/add-product" element={<AddProduct />} />
             <Route exact path="/edit-product/:id" element={<EditProduct />} />
-            <Route exacr path="/add-banner" element={<AddBanner />} />
+            <Route exact path="/add-banner" element={<AddBanner />} />
             <Route
               exact
               path="*"
@@ -47,7 +47,7 @@ function AppRoutes() {
       );
     case "user":
       return (
-        <div className="mt-20">
+        <div className="mt-28">
           {/* <Navigation /> */}
           <Routes>
             <Route path="/" element={<Home />} />
@@ -61,7 +61,7 @@ function AppRoutes() {
       );
     default:
       return (
-        <div className="mt-20">
+        <div className="mt-28">
           {/* <Navigation /> */}
           <Routes>
             <Route path="/" element={<Home />} />

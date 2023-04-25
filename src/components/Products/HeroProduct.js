@@ -30,7 +30,7 @@ const HeroProduct = () => {
       {selectedProduct &&
         selectedProduct.map((product) => {
           return product.isHero ? (
-            <div className="md:flex items-center m-auto gap-10">
+            <div key={product._id} className="md:flex items-center m-auto gap-10">
               <>
                 <div
                   className="rounded-3xl flex items-center justify-center overflow-hidden cursor-pointer"

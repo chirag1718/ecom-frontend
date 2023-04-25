@@ -80,22 +80,22 @@ const Navigation = () => {
             <Stack direction="row" spacing={2}>
               {!window.location.pathname.includes("add-product") && (
                 <Button
-                  onClick={handleAddProduct}
-                  color="inherit"
+                  onClick={handleBanner}
+                  color="secondary"
                   variant="contained"
-                  className="bg-green-900 normal-case"
+                  className="cursor-pointer"
                 >
-                  Add Product
+                  Add Banner
                 </Button>
               )}
               {!window.location.pathname.includes("add-product") && (
                 <Button
-                  onClick={handleBanner}
+                  onClick={handleAddProduct}
                   color="inherit"
                   variant="contained"
-                  className="bg-green-900 normal-case"
+                  className="bg-green-900 "
                 >
-                  Add Banner
+                  Add Product
                 </Button>
               )}
               {!window.location.pathname.includes("add-product") && (
@@ -103,7 +103,7 @@ const Navigation = () => {
                   color="error"
                   variant="contained"
                   onClick={handleLogOut}
-                  className="normal-case"
+                  className=""
                 >
                   Log Out
                 </Button>

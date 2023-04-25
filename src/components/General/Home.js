@@ -1,6 +1,5 @@
 import React from "react";
 import HeroProduct from "../Products/HeroProduct";
-import Product from "../Products/Product";
 import Products from "../Products/Products";
 import Banner from "./Banner/Banner";
 

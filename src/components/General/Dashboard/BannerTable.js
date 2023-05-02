@@ -1,0 +1,113 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Card,
+  CardMedia,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Tooltip,
+} from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+// Api import
+import EcomAPI from "../../../apis/EcomAPI";
+const BannerTable = () => {
+  let navigate = useNavigate();
+  const [selectedBanner, setSelectedBanner] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await EcomAPI.get("/banner/get-all-banner");
+        setSelectedBanner(response.data);
+      } catch (err) {
+        console.log(err, "Error: BannerTable get-all-banner");
+      }
+    };
+    fetchData();
+  });
+
+  const handleEdit = (id, e) => {
+    e.stopPropagation();
+    navigate(`/edit-banner/${id}`);
+  };
+
+  const handleDelete = (id, e) => {
+    e.stopPropagation();
+  };
+  return (
+    <div>
+      <TableContainer
+        className="inline-flex h-[600px] scroll-smooth border-2 rounded-lg w-[1300px]
+    scrollbar-hide overflow-scroll"
+      >
+        <Table stickyHeader>
+          <TableHead>
+            <TableRow>
+              <TableCell className="text-base" align="center">
+                Image
+              </TableCell>
+              <TableCell className="text-base" align="center">
+                Name
+              </TableCell>
+              <TableCell className="text-base" align="center">
+                Source
+              </TableCell>
+              <TableCell className="text-base" align="center">
+                Actions
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {selectedBanner &&
+              selectedBanner.map((banner) => {
+                return (
+                  <TableRow key={banner._id}>
+                    <TableCell align="center">
+                      <Card className="w-96 h-48 m-auto shadow-lg">
+                        <div className="overflow-hidden">
+                          <CardMedia
+                            image={banner.image.url}
+                            className="w-96 h-48"
+                          />
+                        </div>
+                      </Card>
+                    </TableCell>
+                    <TableCell align="center">{banner.name}</TableCell>
+                    <TableCell align="center">{banner.source}</TableCell>
+                    <TableCell align="center" className="space-x-3">
+                      {/* Actions */}
+                      <Tooltip title="Edit" arrow>
+                        <IconButton
+                          color="primary"
+                          onClick={(e) => handleEdit(banner._id, e)}
+                        >
+                          <EditIcon className="" />
+                        </IconButton>
+                      </Tooltip>
+                      {/* Delete */}
+                      <Tooltip title="Delete" arrow>
+                        <IconButton
+                          color="error"
+                          onClick={(e) => handleDelete(banner._id, e)}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                      </Tooltip>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
+  );
+};
+
+export default BannerTable;

@@ -24,7 +24,7 @@ const Banner = () => {
           return (
             <img
               key={banner._id}
-              src={banner.image}
+              src={banner.image.url}
               className="h-80 w-[1400px] rounded-xl"
               alt=""
             />

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  Card,
+  CardMedia,
   IconButton,
   Table,
   TableBody,
@@ -12,6 +14,8 @@ import {
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
 // Api import
 import EcomAPI from "../../../apis/EcomAPI";
 
@@ -27,7 +31,7 @@ const ProductTable = () => {
         setSelectedProduct(response.data);
         console.log(response.data);
       } catch (err) {
-        console.log(err);
+        console.log(err, "Error: Product Table get-all-product ");
       }
     };
     fetchData();
@@ -72,6 +76,9 @@ const ProductTable = () => {
                 Quantity
               </TableCell>
               <TableCell className="text-base " align="center">
+                Hero Product
+              </TableCell>
+              <TableCell className="text-base " align="center">
                 Actions
               </TableCell>
             </TableRow>
@@ -83,19 +90,24 @@ const ProductTable = () => {
                   <TableRow key={product._id} className="">
                     <TableCell align="center">
                       {/* <Tooltip placement="right" title={product.name}> */}
-                      <img
-                        className="h-28 w-28 justify-center m-auto shadow-lg"
-                        src={product.image.url}
-                        alt=""
-                      />
-                      {/* </Tooltip> */}
+                      {/* Convert img to MUI card */}
+                      <Card className="h-28 w-28 justify-center m-auto shadow-lg">
+                        <CardMedia className="h-28 w-28" image={product.image.url} />
+                      </Card>
                     </TableCell>
                     <TableCell align="center">{product.name}</TableCell>
                     <TableCell align="center">{product.category}</TableCell>
                     <TableCell align="center">₹ {product.price}</TableCell>
                     <TableCell align="center">NA</TableCell>
+                    <TableCell align="center">
+                      {product.isHero === true ? (
+                        <CheckIcon color="success" />
+                      ) : (
+                        <CloseIcon color="error" />
+                      )}
+                    </TableCell>
                     <TableCell align="center" className="space-x-3">
-                      {/* Edit */}
+                      {/* Actions */}
                       <Tooltip title="Edit" arrow>
                         <IconButton
                           color="primary"

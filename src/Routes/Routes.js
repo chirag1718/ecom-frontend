@@ -9,10 +9,12 @@ import AddBanner from "../components/General/Banner/AddBanner";
 import Product from "../components/Products/Product";
 import Products from "../components/Products/Products";
 import Dashboard from "../components/General/Dashboard/Dashboard";
-import { useDispatch, useSelector } from "react-redux";
 import Home from "../components/General/Home";
-import { setUser } from "../redux/actions/index";
 import EditProduct from "../components/Products/EditProduct";
+import EditBanner from "../components/General/Banner/EditBanner";
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../redux/actions/index";
 
 function AppRoutes() {
   const userData = useSelector((state) => state.authUser);
@@ -37,6 +39,7 @@ function AppRoutes() {
             <Route exact path="/add-product" element={<AddProduct />} />
             <Route exact path="/edit-product/:id" element={<EditProduct />} />
             <Route exact path="/add-banner" element={<AddBanner />} />
+            <Route exact path="/edit-banner/:id" element={<EditBanner />} />
             <Route
               exact
               path="*"
@@ -74,7 +77,6 @@ function AppRoutes() {
         </div>
       );
   }
-  // return <div className="App"></div>;
 }
 
 export default AppRoutes;

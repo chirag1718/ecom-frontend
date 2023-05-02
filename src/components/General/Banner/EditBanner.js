@@ -1,23 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // MUI
-import {
-  Button,
-  // IconButton,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, IconButton, TextField, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
-// import EditIcon from "@mui/icons-material/Edit";
-// import DeleteIcon from "@mui/icons-material/Delete";
 // Api import
 import EcomAPI from "../../../apis/EcomAPI";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const AddBanner = () => {
+const EditBanner = () => {
   let navigate = useNavigate();
   const [name, setName] = useState("");
   const [image, setImage] = useState(undefined);
   const [source, setSource] = useState("");
+  const [selectedBanner, setSelectedBanner] = useState(null);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const redirect = () => {
@@ -27,39 +21,30 @@ const AddBanner = () => {
     }, 1000);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("file", image);
-      formData.append("source", source);
-      const response = await EcomAPI.post("/banner/add-banner", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-        },
-      });
-      console.log(response, "banner response log");
-      setSuccess("Banner added Successfully");
-      redirect();
-    } catch (err) {
-      console.log(err);
-      setError(err.message);
-    }
+  const { id } = useParams();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await EcomAPI.get(`/banner/get-one-banner/${id}`);
+        setSelectedBanner(response.data);
+        setName(response.data.name);
+        setSource(response.data.source);
+        setImage(response.data.image);
+        console.log(response.data);
+      } catch (err) {
+        console.log(err, "Error: Edit Banner get route");
+      }
+    };
+    fetchData();
+  }, [id]);
+
+  const handleUpdate = () => {
+    // update handler
   };
-
-  // const handleEditBanner = (id, e) => {
-  //   e.stopPropagation();
-  //   navigate(`/edit-banner/${id}`);
-  // };
-
-  // const handleDeleteBanner = () => {
-  //   // Delete banner
-  // };
   return (
     <div>
       <Typography variant="h6" component="div" align="center">
-        Add Banner
+        Edit Banner
       </Typography>
       <form
         name="file"
@@ -102,24 +87,15 @@ const AddBanner = () => {
           />
 
           <div className="flex justify-center">
-            <Button type="submit" variant="contained" onClick={handleSubmit}>
+            <Button type="submit" variant="contained" onClick={handleUpdate}>
               Submit
             </Button>
           </div>
           <span className="text-center">{error ? <>{error}</> : success}</span>
         </Stack>
       </form>
-      {/* Banner Edit/Delete */}
-      {/* <div className="absolute bottom-3 right-3">
-        <IconButton>
-          <EditIcon color="primary" onClick={(e) => handleEditBanner()} />
-        </IconButton>
-        <IconButton>
-          <DeleteIcon color="error" onClick={handleDeleteBanner} />
-        </IconButton>
-      </div> */}
     </div>
   );
 };
 
-export default AddBanner;
+export default EditBanner;

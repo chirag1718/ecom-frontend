@@ -10,6 +10,8 @@ import {
   Typography,
 } from "@mui/material";
 import { Stack } from "@mui/system";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined";
 
 // Api import
 import EcomAPI from "../../apis/EcomAPI";
@@ -28,6 +30,7 @@ const AddProduct = () => {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(undefined);
   const [category, setCategory] = useState({});
+  const [quantity, setQuantity] = useState("");
   const [isHero, setIsHero] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -53,6 +56,7 @@ const AddProduct = () => {
       formData.append("file", image);
       formData.append("category", category);
       formData.append("isHero", isHero);
+      formData.append("quantity", quantity);
       // console.log(formData);
       const response = await EcomAPI.post("/product/add-products", formData, {
         headers: {
@@ -69,7 +73,7 @@ const AddProduct = () => {
   };
   return (
     <div className="">
-      <Typography variant="h6" component="div" align="center">
+      <Typography variant="h6" component="div" align="center" className="mb-3">
         Add Product
       </Typography>
       <form
@@ -139,10 +143,29 @@ const AddProduct = () => {
               }}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">₹</InputAdornment>
+                  <InputAdornment position="start" >
+                    <CurrencyRupeeOutlinedIcon color="success" />
+                  </InputAdornment>
                 ),
               }}
               label="Price"
+            />
+            {/*Quantity */}
+            <TextField
+              value={quantity}
+              onChange={(e) => {
+                setPrice(e.target.value);
+                setError("");
+                setSuccess("");
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <ShoppingCartOutlinedIcon color="warning"/>
+                  </InputAdornment>
+                ),
+              }}
+              label="Quantity"
             />
           </Stack>
 

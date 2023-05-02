@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import EcomAPI from "../../../apis/EcomAPI";
+import Carousel from "react-material-ui-carousel";
 
 const Banner = () => {
   const [selectedBanner, setSelectedBanner] = useState(null);
@@ -18,18 +19,20 @@ const Banner = () => {
   }, []);
   // console.log();
   return (
-    <div className="bg-black h-80 w-[1400px] rounded-xl">
-      {selectedBanner &&
-        selectedBanner.map((banner) => {
-          return (
-            <img
-              key={banner._id}
-              src={banner.image.url}
-              className="h-80 w-[1400px] rounded-xl"
-              alt=""
-            />
-          );
-        })}
+    <div className="h-80 w-[1400px] rounded-xl">
+      <Carousel cycleNavigation={true} swipe={true} dragable={true} >
+        {selectedBanner &&
+          selectedBanner.map((banner) => {
+            return (
+              <img
+                key={banner._id}
+                src={banner.image.url}
+                className="h-80 w-[1400px] rounded-xl"
+                alt=""
+              />
+            );
+          })}
+      </Carousel>
     </div>
   );
 };

@@ -64,7 +64,7 @@ const EditBanner = () => {
   };
   return (
     <div>
-      <Typography variant="h6" component="div" align="center">
+      <Typography variant="h6" component="div" align="center" className="mb-3">
         Edit Banner
       </Typography>
       <form

@@ -12,14 +12,14 @@ const Dashboard = () => {
     <div className="flex items-center justify-center my-10 space-y-20 flex-col">
       {/* Products */}
       <div>
-        <Typography variant="h4" component="h1" align="">
+        <Typography variant="h4" component="h1" align="left">
           Products
         </Typography>
         <ProductTable />
       </div>
       {/* Banner */}
       <div>
-        <Typography variant="h4" component="h1" align="">
+        <Typography variant="h4" component="h1" align="left">
           Banner
         </Typography>
         <BannerTable />

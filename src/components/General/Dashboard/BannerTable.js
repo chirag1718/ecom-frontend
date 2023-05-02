@@ -14,6 +14,8 @@ import {
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
 // Api import
 import EcomAPI from "../../../apis/EcomAPI";
 const BannerTable = () => {
@@ -37,8 +39,15 @@ const BannerTable = () => {
     navigate(`/edit-banner/${id}`);
   };
 
-  const handleDelete = (id, e) => {
+  const handleDelete = async (id, e) => {
     e.stopPropagation();
+    try {
+      const response = await EcomAPI.delete(`/banner/delete/${id}`);
+      setSelectedBanner(selectedBanner.filter((a) => a._id !== id));
+      console.log(response, "Banner deleted succesfully");
+    } catch (err) {
+      console.log(err, "Error: Banner delete");
+    }
   };
   return (
     <div>
@@ -57,6 +66,9 @@ const BannerTable = () => {
               </TableCell>
               <TableCell className="text-base" align="center">
                 Source
+              </TableCell>
+              <TableCell className="text-base" align="center">
+                Hero Banner
               </TableCell>
               <TableCell className="text-base" align="center">
                 Actions
@@ -80,8 +92,16 @@ const BannerTable = () => {
                     </TableCell>
                     <TableCell align="center">{banner.name}</TableCell>
                     <TableCell align="center">{banner.source}</TableCell>
+
+                    <TableCell align="center">
+                      {banner.isHero ? (
+                        <CheckIcon color="success" />
+                      ) : (
+                        <CloseIcon color="error" />
+                      )}
+                    </TableCell>
+                    {/* Actions */}
                     <TableCell align="center" className="space-x-3">
-                      {/* Actions */}
                       <Tooltip title="Edit" arrow>
                         <IconButton
                           color="primary"

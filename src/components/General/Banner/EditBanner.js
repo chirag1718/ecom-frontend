@@ -38,8 +38,29 @@ const EditBanner = () => {
     fetchData();
   }, [id]);
 
-  const handleUpdate = () => {
-    // update handler
+  const handleUpdate = async (e) => {
+    e.stopPropagation();
+    try {
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("source", source);
+      formData.append("file", image);
+
+      const bannerUpdate = await EcomAPI.put(
+        `/banner/update-banner/${id}`,
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(bannerUpdate, "Banner Updated successfully");
+      setSuccess("Banner Updated Successfully");
+      redirect();
+    } catch (err) {
+      console.log(err, "Error: EditBanner handleUpadte");
+    }
   };
   return (
     <div>

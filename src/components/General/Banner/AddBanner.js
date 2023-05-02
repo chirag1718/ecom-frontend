@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // MUI
 import {
   Button,
+  Checkbox,
   // IconButton,
   TextField,
   Typography,
@@ -18,6 +19,7 @@ const AddBanner = () => {
   const [name, setName] = useState("");
   const [image, setImage] = useState(undefined);
   const [source, setSource] = useState("");
+  const [isHero, setIsHero] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const redirect = () => {
@@ -27,6 +29,10 @@ const AddBanner = () => {
     }, 1000);
   };
 
+  const handleHeroToggle = (e) => {
+    setIsHero((isHero) => !isHero);
+    console.log(setIsHero, "this is hero banner");
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -34,6 +40,7 @@ const AddBanner = () => {
       formData.append("name", name);
       formData.append("file", image);
       formData.append("source", source);
+      formData.append("isHero", isHero);
       const response = await EcomAPI.post("/banner/add-banner", formData, {
         headers: {
           "content-type": "multipart/form-data",
@@ -91,7 +98,14 @@ const AddBanner = () => {
               label="Source"
             />
           </Stack>
-
+          <div>
+            Hero Banner
+            <Checkbox
+              color="success"
+              value={isHero}
+              onChange={handleHeroToggle}
+            />
+          </div>
           <input
             onChange={(e) => {
               setImage(e.target.files[0]);

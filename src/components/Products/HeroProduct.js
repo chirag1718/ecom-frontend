@@ -29,8 +29,11 @@ const HeroProduct = () => {
     <div className="my-10 flex justify-center">
       {selectedProduct &&
         selectedProduct.map((product) => {
-          return product.isHero ? (
-            <div key={product._id} className="md:flex items-center m-auto gap-10">
+          return product.isHero  ? (
+            <div
+              key={product._id}
+              className="md:flex items-center m-auto gap-10"
+            >
               <>
                 <div
                   className="rounded-3xl flex items-center justify-center overflow-hidden cursor-pointer"

@@ -100,7 +100,7 @@ const ProductTable = () => {
                     <TableCell align="center">₹ {product.price}</TableCell>
                     <TableCell align="center">NA</TableCell>
                     <TableCell align="center">
-                      {product.isHero === true ? (
+                      {product.isHero ? (
                         <CheckIcon color="success" />
                       ) : (
                         <CloseIcon color="error" />

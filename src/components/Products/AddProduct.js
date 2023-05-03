@@ -143,7 +143,7 @@ const AddProduct = () => {
               }}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start" >
+                  <InputAdornment position="start">
                     <CurrencyRupeeOutlinedIcon color="success" />
                   </InputAdornment>
                 ),
@@ -154,14 +154,14 @@ const AddProduct = () => {
             <TextField
               value={quantity}
               onChange={(e) => {
-                setPrice(e.target.value);
+                setQuantity(e.target.value);
                 setError("");
                 setSuccess("");
               }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <ShoppingCartOutlinedIcon color="warning"/>
+                    <ShoppingCartOutlinedIcon color="warning" />
                   </InputAdornment>
                 ),
               }}

@@ -18,7 +18,8 @@ const Navigation = () => {
   const handleBanner = () => {
     navigate("/add-banner");
   };
-  const handleBackToDashboard = () => {
+  const handleBackToDashboard = (e) => {
+    e.stopPropagation();
     navigate("/admin-dashboard");
   };
 
@@ -32,6 +33,10 @@ const Navigation = () => {
     navigate("/login");
   };
 
+  const handleNavigateToHome = (e) => {
+    e.stopPropagation();
+    navigate("/");
+  };
   switch (userType) {
     case "user":
       return (
@@ -42,8 +47,8 @@ const Navigation = () => {
                 variant="h6"
                 component="div"
                 sx={{ flexGrow: 1 }}
-                onClick={() => navigate("/")}
                 className="cursor-pointer"
+                onClick={handleNavigateToHome}
               >
                 Elaichi kitchen
               </Typography>

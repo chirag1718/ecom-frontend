@@ -1,11 +1,14 @@
 import {
   Button,
+  Checkbox,
   InputAdornment,
   MenuItem,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import EcomAPI from "../../apis/EcomAPI";
@@ -19,6 +22,7 @@ const EditProduct = () => {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(undefined);
   const [category, setCategory] = useState({});
+  const [isHero, setIsHero] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -49,6 +53,10 @@ const EditProduct = () => {
       window.clearTimeout(time);
     }, 2000);
   };
+  const handleHeroToggle = () => {
+    setIsHero((isHero) => !isHero);
+    console.log(setIsHero, "this is hero product");
+  };
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -59,6 +67,7 @@ const EditProduct = () => {
       formData.append("price", price);
       formData.append("file", image);
       formData.append("category", category);
+      formData.append("isHero", isHero);
 
       const productUpdate = await EcomAPI.put(
         `/product/update-product/${id}`,
@@ -145,11 +154,21 @@ const EditProduct = () => {
               }}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">₹</InputAdornment>
+                  <InputAdornment position="start">
+                    <CurrencyRupeeOutlinedIcon color="success"/>
+                  </InputAdornment>
                 ),
               }}
               label="Price"
             />
+            <div>
+              Hero Product
+              <Checkbox
+                color="success"
+                value={isHero}
+                onChange={handleHeroToggle}
+              />
+            </div>
             <input
               onChange={(e) => {
                 setImage(e.target.files[0]);

@@ -19,7 +19,7 @@ const ProductsCard = () => {
     };
     fetchData();
   }, []);
-  
+
   const handleProductSelect = (id) => {
     navigate(`/product/${id}`);
   };
@@ -36,6 +36,7 @@ const ProductsCard = () => {
             >
               <div className="overflow-hidden">
                 <CardMedia
+                  component="img"
                   image={product.image.url}
                   className=" w-40 h-32"
                   // className=" w-40 h-32 transition-all duration-75 ease-in transform hover:scale-105"

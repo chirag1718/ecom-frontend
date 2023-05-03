@@ -84,6 +84,7 @@ const BannerTable = () => {
                       <Card className="w-96 h-48 m-auto shadow-lg">
                         <div className="overflow-hidden">
                           <CardMedia
+                            component="img"
                             image={banner.image.url}
                             className="w-96 h-48"
                           />

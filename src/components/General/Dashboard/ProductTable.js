@@ -92,13 +92,17 @@ const ProductTable = () => {
                       {/* <Tooltip placement="right" title={product.name}> */}
                       {/* Convert img to MUI card */}
                       <Card className="h-28 w-28 justify-center m-auto shadow-lg">
-                        <CardMedia className="h-28 w-28" image={product.image.url} />
+                        <CardMedia
+                          component="img"
+                          className="h-28 w-28"
+                          image={product.image.url}
+                        />
                       </Card>
                     </TableCell>
                     <TableCell align="center">{product.name}</TableCell>
                     <TableCell align="center">{product.category}</TableCell>
                     <TableCell align="center">₹ {product.price}</TableCell>
-                    <TableCell align="center">NA</TableCell>
+                    <TableCell align="center">{product.quantity}</TableCell>
                     <TableCell align="center">
                       {product.isHero ? (
                         <CheckIcon color="success" />

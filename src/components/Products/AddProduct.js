@@ -6,6 +6,7 @@ import {
   Checkbox,
   InputAdornment,
   MenuItem,
+  Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
@@ -32,18 +33,28 @@ const AddProduct = () => {
   const [category, setCategory] = useState({});
   const [quantity, setQuantity] = useState("");
   const [isHero, setIsHero] = useState(false);
+  const [open, setOpen] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  // Navigate to 🏠 after succesfull product submission
   const redirect = () => {
     let time = setTimeout(function () {
       navigate("/");
       window.clearTimeout(time);
-    }, 1000);
+    }, 2000);
   };
 
   const handleHeroToggle = (e) => {
     setIsHero((isHero) => !isHero);
     console.log(setIsHero, "this is hero product");
+  };
+
+  const handleCloseToast = (e, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
   };
   // Form Submit
   const handleSubmit = async (e) => {
@@ -64,6 +75,7 @@ const AddProduct = () => {
         },
       });
       console.log(response.data, "Submitted successfully");
+      setOpen(true);
       setSuccess("Product added Successfully");
       redirect();
     } catch (err) {
@@ -191,6 +203,12 @@ const AddProduct = () => {
           <div className="flex justify-center">
             <Button type="submit" variant="contained" onClick={handleSubmit}>
               Submit
+              <Snackbar
+                message="Product Submitted Succesfully"
+                autoHideDuration={2000}
+                open={open}
+                onClose={handleCloseToast}
+              />
             </Button>
           </div>
           <span className="text-center">{error ? <>{error}</> : success}</span>

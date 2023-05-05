@@ -4,10 +4,11 @@ import {
   InputAdornment,
   MenuItem,
   Stack,
+  Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+// import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -23,6 +24,7 @@ const EditProduct = () => {
   const [image, setImage] = useState(undefined);
   const [category, setCategory] = useState({});
   const [isHero, setIsHero] = useState(false);
+  const [open, setOpen] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -58,6 +60,12 @@ const EditProduct = () => {
     console.log(setIsHero, "this is hero product");
   };
 
+  const handleCloseToast = (e, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -130,7 +138,6 @@ const EditProduct = () => {
                 setError("");
                 setSuccess("");
               }}
-              defaultValue="Chocolate"
               helperText="Please select a category"
             >
               {SelectOptions.map((categories) => (
@@ -155,7 +162,7 @@ const EditProduct = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <CurrencyRupeeOutlinedIcon color="success"/>
+                    <CurrencyRupeeOutlinedIcon color="success" />
                   </InputAdornment>
                 ),
               }}
@@ -170,6 +177,7 @@ const EditProduct = () => {
               />
             </div>
             <input
+              accept="image/"
               onChange={(e) => {
                 setImage(e.target.files[0]);
                 setError("");
@@ -182,6 +190,12 @@ const EditProduct = () => {
             <div className=" flex justify-center">
               <Button type="submit" variant="contained" onClick={handleUpdate}>
                 Submit
+                <Snackbar
+                  message="Product Updated Succesfully"
+                  autoHideDuration={2000}
+                  open={open}
+                  onclose={handleCloseToast}
+                />
               </Button>
             </div>
             <span className="text-center">

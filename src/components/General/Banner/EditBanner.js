@@ -71,7 +71,7 @@ const EditBanner = () => {
         name="file"
         method="post"
         encType="multipart/form-data"
-        action="/banner/add-banner"
+        action="/banner/edit-banner"
       >
         <Stack spacing={4} className="mx-4">
           <Stack direction="column" spacing={4}>

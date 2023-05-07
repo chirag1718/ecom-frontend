@@ -7,7 +7,7 @@ const AddToCart = ({ product }) => {
     const user = localStorage.getItem("user");
     const userId = JSON.parse(user);
     try {
-      const response = await EcomAPI.post("/cart/add-items", {
+      const response = await EcomAPI.post("/cart/add-item", {
         userId: userId._id,
         productId: product._id,
       });

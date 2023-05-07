@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import EcomAPI from "../../apis/EcomAPI";
 import { useParams } from "react-router-dom";
+import AddToCart from "../utils/AddToCart";
+
 // This is component that provides a single component UI
 const Product = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -49,6 +51,7 @@ const Product = () => {
               <p className="text-sm">₹ {selectedProduct.price}</p>
             </button>
             <p className="text-xl underline">{selectedProduct.category}</p>
+            <AddToCart product={selectedProduct} />
           </div>
         </div>
       )}

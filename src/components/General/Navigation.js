@@ -4,6 +4,7 @@ import { Button, Stack, Toolbar, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../../redux/actions/index";
+import Cart from "./Cart";
 
 const Navigation = () => {
   const userData = useSelector((state) => state.authUser);
@@ -41,7 +42,7 @@ const Navigation = () => {
     case "user":
       return (
         <>
-          <AppBar className="bg-stone-800">
+          <AppBar className="bg-stone-800 flex">
             <Toolbar>
               <Typography
                 variant="h6"
@@ -64,6 +65,7 @@ const Navigation = () => {
                 >
                   Log out
                 </Button>
+                <Cart />
               </Stack>
             </Toolbar>
           </AppBar>

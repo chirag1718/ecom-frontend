@@ -192,29 +192,29 @@
 
 // export default Cart;
 
+// MOVE THIS CART COMPONENT TO CHECKOUT FOLDER AND DON'T FORGET TO CHANGE IMPORT STATEMENTS
+
 import {
-  AppBar,
   Badge,
   Box,
   Card,
   CardMedia,
   Divider,
   Drawer,
-  Hidden,
-  Icon,
   IconButton,
   Typography,
 } from "@mui/material";
+import "../../index.css";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import React, { useEffect, useState } from "react";
 import EcomAPI from "../../apis/EcomAPI";
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 
 const Cart = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
-  const [totalAmount, setTotalAmount] = useState(0);
   const user = localStorage.getItem("user");
   const userId = JSON.parse(user);
   useEffect(() => {
@@ -261,14 +261,11 @@ const Cart = () => {
         anchor="right"
         open={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
-        sx={{
-          backgroundColor: "",
-        }}
+        sx={{}}
       >
         <Box
           p={1.6}
           width="500px"
-          height="200px"
           textAlign="center"
           role="presentation"
           sx={{
@@ -276,6 +273,10 @@ const Cart = () => {
             justifyContent: "center",
             alignItems: "center",
             gap: "10px",
+            position: "sticky",
+            top: "0",
+            backgroundColor: "white",
+            boxShadow: "0px 1px 8px -6px",
           }}
         >
           <Typography variant="h5" component="span" align="center">
@@ -291,7 +292,7 @@ const Cart = () => {
           </IconButton>
         </Box>
         <Divider />
-        <div style={{}}>
+        <div>
           {selectedItems &&
             selectedItems.map((cartItem) => {
               return (
@@ -303,23 +304,21 @@ const Cart = () => {
                     margin: "10px",
                     padding: "10px",
                     alignItems: "center",
-                    // backgroundColor: "black",
-                    // color: "white",
                   }}
                 >
                   <Box>
                     <Card
                       sx={{
-                        height: "150px",
-                        width: "150px",
+                        height: "100px",
+                        width: "100px",
                         display: "flex",
                       }}
                     >
                       <CardMedia
                         image={cartItem.productId.image}
                         sx={{
-                          height: "150px",
-                          width: "150px",
+                          height: "100px",
+                          width: "100px",
                         }}
                       />
                     </Card>
@@ -337,11 +336,53 @@ const Cart = () => {
                     <Typography variant="h5" component="span">
                       ₹ {cartItem.productId.price}
                     </Typography>
+                    <div style={{ flexDirection: "row" }}>
+                      <IconButton>
+                        <RemoveIcon />
+                      </IconButton>
+                      <span>{cartItem.quantity}</span>
+                      <IconButton>
+                        <AddIcon />
+                      </IconButton>
+                    </div>
                   </div>
                 </div>
               );
             })}
         </div>
+        <Box
+          sx={{
+            position: "sticky",
+            bottom: 0,
+            backgroundColor: "#fff",
+            // boxShadow: "0px 1px 8px -6px",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "end",
+              paddingTop: "10px",
+              paddingRight: "17px",
+              boxShadow: "0px -1px 5px -3px",
+            }}
+          >
+            <Typography sx={{ fontSize: "25px" }} component="span">
+              Total
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: "40px",
+                color: "red",
+              }}
+              component="span"
+            >
+              <CurrencyRupeeIcon sx={{ fontSize: "35px" }} />
+              {cartTotal()}
+            </Typography>
+          </div>
+        </Box>
       </Drawer>
     </div>
   );

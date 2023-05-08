@@ -42,7 +42,7 @@ const Navigation = () => {
     case "user":
       return (
         <>
-          <AppBar className="bg-stone-800 flex">
+          <AppBar className="bg-stone-800 flex p-1" >
             <Toolbar>
               <Typography
                 variant="h6"

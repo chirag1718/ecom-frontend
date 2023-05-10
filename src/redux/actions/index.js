@@ -21,23 +21,16 @@ export const addToCart = (id) => {
   };
 };
 
-export const removeFromCart = (id) => {
+export const incQuantity = (id) => {
   return {
-    type: "REMOVE_FROM_CART",
+    type: "INC_QUANTITY",
     id,
   };
 };
 
-export const addQuantity = (id) => {
+export const decQuantity = (id) => {
   return {
-    type: "ADD_QUANTITY",
-    id,
-  };
-};
-
-export const subQuantity = (id) => {
-  return {
-    type: "SUB_QUANTITY",
+    type: "DEC_QUANTITY",
     id,
   };
 };

@@ -13,7 +13,7 @@ import {
 import { Stack } from "@mui/system";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined";
-
+import SendIcon from "@mui/icons-material/Send";
 // Api import
 import EcomAPI from "../../apis/EcomAPI";
 
@@ -201,7 +201,12 @@ const AddProduct = () => {
           />
 
           <div className="flex justify-center">
-            <Button type="submit" variant="contained" onClick={handleSubmit}>
+            <Button
+              type="submit"
+              variant="contained"
+              onClick={handleSubmit}
+              endIcon={<SendIcon />}
+            >
               Submit
               <Snackbar
                 message="Product Submitted Succesfully"

@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 // import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined";
+import SendIcon from "@mui/icons-material/Send";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import EcomAPI from "../../apis/EcomAPI";
@@ -188,7 +189,12 @@ const EditProduct = () => {
               name="uImage"
             />
             <div className=" flex justify-center">
-              <Button type="submit" variant="contained" onClick={handleUpdate}>
+              <Button
+                type="submit"
+                variant="contained"
+                onClick={handleUpdate}
+                endIcon={<SendIcon />}
+              >
                 Submit
                 <Snackbar
                   message="Product Updated Succesfully"

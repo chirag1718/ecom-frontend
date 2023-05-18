@@ -20,6 +20,7 @@ import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -27,21 +28,26 @@ const Cart = () => {
   const [open, setOpen] = useState(false);
   const user = localStorage.getItem("user");
   const userId = JSON.parse(user);
+  const cartData = useSelector((state) => state.cart);
+  console.log(cartData.totalQuantity);
+  const fetchData = async () => {
+    try {
+      const response = await EcomAPI.post("/cart/get-all-items", {
+        userId: userId._id,
+      });
+      setSelectedItems(response.data);
+      // console.log(selectedItems, "This is seletedItems");
+
+      console.log(response.data, "This is cart items");
+    } catch (err) {
+      console.log(err, "Error: This is Cart component Error");
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await EcomAPI.post("/cart/get-all-items", {
-          userId: userId._id,
-        });
-        setSelectedItems(response.data);
-        // console.log(selectedItems, "This is seletedItems");
-        console.log(response.data, "This is cart items");
-      } catch (err) {
-        console.log(err, "Error: This is Cart component Error");
-      }
-    };
-    fetchData();
-  }, [userId._id]);
+    if (isDrawerOpen) {
+      fetchData();
+    }
+  }, [isDrawerOpen]);
   function cartTotal() {
     const total = selectedItems.reduce(
       (acc, curr) => acc + curr.productId.price * curr.quantity,
@@ -60,12 +66,12 @@ const Cart = () => {
     }
     setOpen(true);
   };
-  const handleIncItem = (cartItem) => {
-    //
-  };
-  const handleDecItem = () => {
-    //
-  };
+  // const handleIncItem = (cartItem) => {
+  //   fetchData();
+  // };
+  // const handleDecItem = () => {
+  //   fetchData();
+  // };
   const handleCloseToast = (e, reason) => {
     if (reason === "clickaway") {
       return;
@@ -79,7 +85,7 @@ const Cart = () => {
         edge="start"
         onClick={() => setIsDrawerOpen(true)}
       >
-        <Badge badgeContent={selectedItems.length} color="secondary">
+        <Badge badgeContent color="secondary">
           <LocalMallOutlinedIcon htmlColor="#fff" />
         </Badge>
       </IconButton>
@@ -175,7 +181,7 @@ const Cart = () => {
                       <Button
                         color="inherit"
                         size="small"
-                        onClick={handleDecItem}
+                        // onClick={handleDecItem}
                       >
                         <RemoveIcon />
                       </Button>
@@ -192,7 +198,7 @@ const Cart = () => {
                       <Button
                         color="inherit"
                         size="small"
-                        onClick={handleIncItem}
+                        // onClick={handleIncItem}
                       >
                         <AddIcon />
                       </Button>

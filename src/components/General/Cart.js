@@ -85,9 +85,13 @@ const Cart = () => {
         edge="start"
         onClick={() => setIsDrawerOpen(true)}
       >
-        <Badge badgeContent color="secondary">
+        {selectedItems.length === 1 ? (
+          <Badge variant="dot" color="secondary">
+            <LocalMallOutlinedIcon htmlColor="#fff" />
+          </Badge>
+        ) : (
           <LocalMallOutlinedIcon htmlColor="#fff" />
-        </Badge>
+        )}
       </IconButton>
       <Drawer
         anchor="right"

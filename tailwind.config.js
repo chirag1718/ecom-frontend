@@ -8,6 +8,14 @@ module.exports = {
       lg: "976px",
       xl: "1440px",
     },
+    fontFamily: {
+      logo: ["Italiana"],
+      poppins: ["Poppins"],
+    },
+    fontSize: {
+      logo: ["32px", "38px"],
+      custom: ["20px", "30px"],
+    },
     extend: {},
   },
   plugins: [require("tailwindcss")],

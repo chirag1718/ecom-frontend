@@ -8,12 +8,12 @@ import Navigation from "./components/General/Navigation";
 
 function App() {
   return (
-    <>
+    <div className="m-auto w-[1440px]">
       <Router>
         <Navigation />
         <AppRoutes />
       </Router>
-    </>
+    </div>
   );
 }
 

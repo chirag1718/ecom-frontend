@@ -1,10 +1,10 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import { Button, Stack, Toolbar, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../../redux/actions/index";
 import Cart from "./Cart";
+import wishlist from "../../Images/wishList.svg";
 
 const Navigation = () => {
   const userData = useSelector((state) => state.authUser);
@@ -42,7 +42,45 @@ const Navigation = () => {
     case "user":
       return (
         <>
-          <AppBar className="bg-stone-800 flex p-1" >
+          {/* Add sticky top-0 z-10 for sticky banner */}
+          <div className="h-[80px] w-[1440px] bg-neutral-50 flex items-center justify-between m-auto border-b-[1px] ">
+            <div className=" left-5">
+              <span
+                className="text-neutral-500 font-logo font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear hover:text-black"
+                onClick={handleNavigateToHome}
+              >
+                Elaichi Kitchen
+              </span>
+            </div>
+            <div>
+              <Stack
+                direction="row"
+                spacing={3}
+                className="font-poppins flex items-center mr-5 "
+              >
+                <Typography
+                  variant="inherit"
+                  component="span"
+                  className="text-custom"
+                >
+                  Categories
+                </Typography>
+                <div className="flex gap-3 cursor-pointer">
+                  <img src={wishlist} alt="" />
+                  <Cart />
+                </div>
+                <Typography
+                  variant="inherit"
+                  component="span"
+                  className="text-custom cursor-pointer"
+                  onClick={handleLogOut}
+                >
+                  Logout
+                </Typography>
+              </Stack>
+            </div>
+          </div>
+          {/* <AppBar className="bg-stone-800 flex p-1" >
             <Toolbar>
               <Typography
                 variant="h6"
@@ -68,61 +106,149 @@ const Navigation = () => {
                 <Cart />
               </Stack>
             </Toolbar>
-          </AppBar>
+          </AppBar> */}
         </>
       );
     case "admin":
       return (
-        <AppBar className="bg-stone-800">
-          <Toolbar>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1 }}
+        <div className="h-[80px] w-[1440px] bg-neutral-50 flex items-center justify-between m-auto border-b-[1px] ">
+          <div className=" left-5">
+            <span
+              className="text-neutral-500 font-logo font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear hover:text-black"
               onClick={handleBackToDashboard}
-              className="cursor-pointer"
             >
-              Elaichi kitchen
-            </Typography>
-            <Stack direction="row" spacing={2}>
-              {!window.location.pathname.includes("add-product") && (
-                <Button
-                  onClick={handleBanner}
-                  color="secondary"
-                  variant="contained"
-                  className="cursor-pointer"
-                >
-                  Add Banner
-                </Button>
-              )}
-              {!window.location.pathname.includes("add-product") && (
-                <Button
-                  onClick={handleAddProduct}
-                  color="inherit"
-                  variant="contained"
-                  className="bg-green-900 "
-                >
-                  Add Product
-                </Button>
-              )}
-              {!window.location.pathname.includes("add-product") && (
-                <Button
-                  color="error"
-                  variant="contained"
-                  onClick={handleLogOut}
-                  className=""
-                >
-                  Log Out
-                </Button>
-              )}
+              Elaichi Kitchen
+            </span>
+          </div>
+          <div>
+            <Stack
+              direction="row"
+              spacing={3}
+              className="font-poppins flex items-center mr-5 cursor-pointer"
+            >
+              {!window.location.pathname.includes("add-banner") &&
+                !window.location.pathname.includes("add-product") && (
+                  <Typography
+                    variant="inherit"
+                    component="span"
+                    onClick={handleBanner}
+                    className="text-custom p-1 hover:text-green-500 border-b-[1px] border-neutral-50 hover:border-b-[1px] hover:border-green-500 transition-all ease-linear"
+                  >
+                    Add Banner
+                  </Typography>
+                )}
+              {!window.location.pathname.includes("add-product") &&
+                !window.location.pathname.includes("add-banner") && (
+                  <Typography
+                    variant="inherit"
+                    component="span"
+                    className="text-custom p-1 hover:text-green-600 border-b-[1px] border-neutral-50 hover:border-b-[1px] hover:border-green-600 transition-all ease-linear"
+                    onClick={handleAddProduct}
+                  >
+                    Add Product
+                  </Typography>
+                )}
+              {!window.location.pathname.includes("add-product") &&
+                !window.location.pathname.includes("add-banner") && (
+                  <Typography
+                    variant="inherit"
+                    component="span"
+                    className="text-custom p-1 hover:text-rose-600 border-b-[1px] border-neutral-50 hover:border-b-[1px] hover:border-rose-600 transition-all ease-linear"
+                    onClick={handleLogOut}
+                  >
+                    Logout
+                  </Typography>
+                )}
             </Stack>
-          </Toolbar>
-        </AppBar>
+          </div>
+        </div>
+        // <AppBar className="bg-stone-800">
+        //   <Toolbar>
+        //     <Typography
+        //       variant="h6"
+        //       component="div"
+        //       sx={{ flexGrow: 1 }}
+        //       onClick={handleBackToDashboard}
+        //       className="cursor-pointer"
+        //     >
+        //       Elaichi kitchen
+        //     </Typography>
+        //     <Stack direction="row" spacing={2}>
+        //       {!window.location.pathname.includes("add-product") && (
+        //         <Button
+        //           onClick={handleBanner}
+        //           color="secondary"
+        //           variant="contained"
+        //           className="cursor-pointer"
+        //         >
+        //           Add Banner
+        //         </Button>
+        //       )}
+        //       {!window.location.pathname.includes("add-product") && (
+        //         <Button
+        //           onClick={handleAddProduct}
+        //           color="inherit"
+        //           variant="contained"
+        //           className="bg-green-900 "
+        //         >
+        //           Add Product
+        //         </Button>
+        //       )}
+        //       {!window.location.pathname.includes("add-product") && (
+        //         <Button
+        //           color="error"
+        //           variant="contained"
+        //           onClick={handleLogOut}
+        //           className=""
+        //         >
+        //           Log Out
+        //         </Button>
+        //       )}
+        //     </Stack>
+        //   </Toolbar>
+        // </AppBar>
       );
     default:
       return (
         <>
-          <AppBar className="bg-stone-800">
+          <div className="h-[80px] w-[1440px] bg-neutral-50 flex items-center justify-between m-auto border-b-[1px] ">
+            <div className=" left-5">
+              <span
+                className="font-logo font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear"
+                onClick={handleNavigateToHome}
+              >
+                Elaichi Kitchen
+              </span>
+            </div>
+            <div>
+              <Stack
+                direction="row"
+                spacing={3}
+                className="font-poppins flex items-center mr-5 "
+              >
+                {!window.location.pathname.includes("login") &&
+                  !window.location.pathname.includes("signup") && (
+                    <Typography
+                      variant="inherit"
+                      component="span"
+                      className="text-custom"
+                    >
+                      Categories
+                    </Typography>
+                  )}
+
+                <Typography
+                  variant="inherit"
+                  component="span"
+                  className="text-custom cursor-pointer"
+                  onClick={handleLogIn}
+                >
+                  Login / Sign Up
+                </Typography>
+              </Stack>
+            </div>
+          </div>
+          {/* <AppBar className="bg-stone-800">
             <Toolbar>
               <Typography
                 variant="h6"
@@ -142,7 +268,7 @@ const Navigation = () => {
                 </Button>
               </Stack>
             </Toolbar>
-          </AppBar>
+          </AppBar> */}
         </>
       );
   }

@@ -46,7 +46,7 @@ const Navigation = () => {
           <div className="h-[80px] w-[1440px] bg-neutral-50 flex items-center justify-between m-auto border-b-[1px] ">
             <div className=" left-5">
               <span
-                className="text-neutral-500 font-logo font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear hover:text-black"
+                className="font-logo font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear"
                 onClick={handleNavigateToHome}
               >
                 Elaichi Kitchen
@@ -61,7 +61,7 @@ const Navigation = () => {
                 <Typography
                   variant="inherit"
                   component="span"
-                  className="text-custom"
+                  className="text-custom cursor-pointer"
                 >
                   Categories
                 </Typography>
@@ -72,7 +72,7 @@ const Navigation = () => {
                 <Typography
                   variant="inherit"
                   component="span"
-                  className="text-custom cursor-pointer"
+                  className="text-custom p-1 hover:text-rose-600 border-b-[1px] border-neutral-50 hover:border-b-[1px] hover:border-rose-600 transition-all ease-linear cursor-pointer"
                   onClick={handleLogOut}
                 >
                   Logout
@@ -153,7 +153,7 @@ const Navigation = () => {
                   <Typography
                     variant="inherit"
                     component="span"
-                    className="text-custom p-1 hover:text-rose-600 border-b-[1px] border-neutral-50 hover:border-b-[1px] hover:border-rose-600 transition-all ease-linear"
+                    className="text-custom p-1 hover:text-rose-600 border-b-[1px] border-neutral-50 hover:border-b-[1px] hover:border-red-600 transition-all ease-linear"
                     onClick={handleLogOut}
                   >
                     Logout

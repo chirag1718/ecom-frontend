@@ -50,27 +50,26 @@ const BannerTable = () => {
     }
   };
   return (
-    <div>
+    <div className="">
       <TableContainer
         className="inline-flex h-[600px] scroll-smooth border-2 rounded-lg w-[1300px]
-    scrollbar-hide overflow-scroll"
-      >
+    scrollbar-hide overflow-scroll">
         <Table stickyHeader>
           <TableHead>
             <TableRow>
-              <TableCell className="text-base" align="center">
+              <TableCell className="text-base font-poppins" align="center">
                 Image
               </TableCell>
-              <TableCell className="text-base" align="center">
+              <TableCell className="text-base font-poppins" align="center">
                 Name
               </TableCell>
-              <TableCell className="text-base" align="center">
+              <TableCell className="text-base font-poppins" align="center">
                 Source
               </TableCell>
-              <TableCell className="text-base" align="center">
+              <TableCell className="text-base font-poppins" align="center">
                 Hero Banner
               </TableCell>
-              <TableCell className="text-base" align="center">
+              <TableCell className="text-base font-poppins" align="center">
                 Actions
               </TableCell>
             </TableRow>
@@ -81,18 +80,18 @@ const BannerTable = () => {
                 return (
                   <TableRow key={banner._id}>
                     <TableCell align="center">
-                      <Card className="w-96 h-48 m-auto shadow-lg">
+                      <Card className="w-60 h-32 m-auto shadow-lg">
                         <div className="overflow-hidden">
                           <CardMedia
                             component="img"
                             image={banner.image.url}
-                            className="w-96 h-48"
+                            className="w-60 h-32"
                           />
                         </div>
                       </Card>
                     </TableCell>
-                    <TableCell align="center">{banner.name}</TableCell>
-                    <TableCell align="center">{banner.source}</TableCell>
+                    <TableCell align="center" className="font-poppins">{banner.name}</TableCell>
+                    <TableCell align="center" className="font-poppins">{banner.source}</TableCell>
 
                     <TableCell align="center">
                       {banner.isHero ? (

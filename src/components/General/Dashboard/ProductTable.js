@@ -60,25 +60,25 @@ const ProductTable = () => {
         <Table stickyHeader>
           <TableHead className="">
             <TableRow>
-              <TableCell className="text-base " align="center">
+              <TableCell className="text-base font-poppins" align="center">
                 Image
               </TableCell>
-              <TableCell className="text-base " align="center">
+              <TableCell className="text-base font-poppins" align="center">
                 Name
               </TableCell>
-              <TableCell className="text-base " align="center">
+              <TableCell className="text-base font-poppins" align="center">
                 Category
               </TableCell>
-              <TableCell className="text-base " align="center">
+              <TableCell className="text-base font-poppins" align="center">
                 Price
               </TableCell>
-              <TableCell className="text-base " align="center">
+              <TableCell className="text-base font-poppins" align="center">
                 Quantity
               </TableCell>
-              <TableCell className="text-base " align="center">
+              <TableCell className="text-base font-poppins" align="center">
                 Hero Product
               </TableCell>
-              <TableCell className="text-base " align="center">
+              <TableCell className="text-base font-poppins" align="center">
                 Actions
               </TableCell>
             </TableRow>
@@ -99,10 +99,10 @@ const ProductTable = () => {
                         />
                       </Card>
                     </TableCell>
-                    <TableCell align="center">{product.name}</TableCell>
-                    <TableCell align="center">{product.category}</TableCell>
-                    <TableCell align="center">₹ {product.price}</TableCell>
-                    <TableCell align="center">{product.quantity}</TableCell>
+                    <TableCell align="center" className="font-poppins">{product.name}</TableCell>
+                    <TableCell align="center" className="font-poppins">{product.category}</TableCell>
+                    <TableCell align="center" className="font-poppins">₹ {product.price}</TableCell>
+                    <TableCell align="center" className="font-poppins">{product.quantity}</TableCell>
                     <TableCell align="center">
                       {product.isHero ? (
                         <CheckIcon color="success" />

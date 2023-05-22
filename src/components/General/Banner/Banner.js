@@ -19,7 +19,7 @@ const Banner = () => {
   }, []);
   // console.log();
   return (
-    <div className="h-80 w-[1400px] rounded-xl">
+    <div className="h-[998px] w-[1400px] mt-10">
       <Carousel cycleNavigation={true} swipe={true} dragable={true} >
         {selectedBanner &&
           selectedBanner.map((banner) => {
@@ -27,7 +27,7 @@ const Banner = () => {
               <img
                 key={banner._id}
                 src={banner.image.url}
-                className="h-80 w-[1400px] rounded-xl"
+                className="h-[998px] w-[1400px]"
                 alt=""
               />
             );

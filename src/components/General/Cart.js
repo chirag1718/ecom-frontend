@@ -13,9 +13,9 @@ import {
   Typography,
 } from "@mui/material";
 import "../../index.css";
-import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import React, { useEffect, useState } from "react";
 import EcomAPI from "../../apis/EcomAPI";
+import cart from "../../Images/cart.svg";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
@@ -80,19 +80,20 @@ const Cart = () => {
   };
   return (
     <div>
-      <IconButton
-        size="small"
-        edge="start"
+      <span
+        // size="small"
+        // edge="start"
+      
         onClick={() => setIsDrawerOpen(true)}
       >
         {selectedItems.length === 1 ? (
           <Badge variant="dot" color="secondary">
-            <LocalMallOutlinedIcon htmlColor="#fff" />
+            <img src={cart} alt="" />
           </Badge>
         ) : (
-          <LocalMallOutlinedIcon htmlColor="#fff" />
+          <img src={cart} alt="" />
         )}
-      </IconButton>
+      </span>
       <Drawer
         anchor="right"
         open={isDrawerOpen}
@@ -120,12 +121,7 @@ const Cart = () => {
             Cart
           </Typography>
           <IconButton disableRipple sx={{ cursor: "default" }}>
-            <LocalMallOutlinedIcon
-              sx={{
-                fontSize: "25px",
-                color: "black",
-              }}
-            />
+            <img src={cart} alt="" />
           </IconButton>
         </Box>
         <Divider />

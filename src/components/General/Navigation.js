@@ -211,7 +211,7 @@ const Navigation = () => {
     default:
       return (
         <>
-          <div className="h-[80px] w-[1440px] bg-neutral-50 flex items-center justify-between m-auto border-b-[1px] ">
+          <div className="h-[80px] w-[1440px] bg-neutral-50 flex items-center justify-between m-auto border-b-[1px]">
             <div className=" left-5">
               <span
                 className="font-logo font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear"

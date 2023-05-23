@@ -80,12 +80,12 @@ const BannerTable = () => {
                 return (
                   <TableRow key={banner._id}>
                     <TableCell align="center">
-                      <Card className="w-60 h-32 m-auto shadow-lg">
+                      <Card className="w-96 h-32 m-auto shadow-lg">
                         <div className="overflow-hidden">
                           <CardMedia
                             component="img"
                             image={banner.image.url}
-                            className="w-60 h-32"
+                            className="w-96 h-32"
                           />
                         </div>
                       </Card>

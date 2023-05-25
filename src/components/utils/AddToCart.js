@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import EcomAPI from "../../apis/EcomAPI";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../redux/reducers/cartSlice";
+// import cart from "../../Images/cart.svg";
 const AddToCart = ({ product }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();

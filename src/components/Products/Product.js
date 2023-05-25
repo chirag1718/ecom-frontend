@@ -35,7 +35,7 @@ const Product = () => {
                   width: "400px",
                   // rotate: "-90deg",
                 }}
-                className="transition-all duration-300 ease-in transform hover:scale-110"
+                className="transition-all duration-300 ease-in transform hover:scale-110 object-cover"
                 alt=""
               />
             </div>

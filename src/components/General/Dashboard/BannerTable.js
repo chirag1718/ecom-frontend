@@ -53,7 +53,8 @@ const BannerTable = () => {
     <div className="">
       <TableContainer
         className="inline-flex h-[600px] scroll-smooth border-2 rounded-lg w-[1300px]
-    scrollbar-hide overflow-scroll">
+    scrollbar-hide overflow-scroll"
+      >
         <Table stickyHeader>
           <TableHead>
             <TableRow>
@@ -90,8 +91,12 @@ const BannerTable = () => {
                         </div>
                       </Card>
                     </TableCell>
-                    <TableCell align="center" className="font-poppins">{banner.name}</TableCell>
-                    <TableCell align="center" className="font-poppins">{banner.source}</TableCell>
+                    <TableCell align="center" className="font-poppins">
+                      {banner.name}
+                    </TableCell>
+                    <TableCell align="center" className="font-poppins">
+                      {banner.source}
+                    </TableCell>
 
                     <TableCell align="center">
                       {banner.isHero ? (

@@ -20,6 +20,8 @@ const AddBanner = () => {
   const [image, setImage] = useState(undefined);
   const [source, setSource] = useState("");
   const [isHero, setIsHero] = useState(false);
+  const [isMid, setIsMid] = useState(false);
+  const [isBottom, setIsBottom] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const redirect = () => {
@@ -29,9 +31,11 @@ const AddBanner = () => {
     }, 1000);
   };
 
-  const handleHeroToggle = (e) => {
+  const handleToggle = (e) => {
     setIsHero((isHero) => !isHero);
-    console.log(setIsHero, "this is hero banner");
+    setIsMid((isMid) => !isMid);
+    setIsBottom((isBottom) => !isBottom);
+    // console.log(setIsHero, "this is hero banner");
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,6 +45,8 @@ const AddBanner = () => {
       formData.append("file", image);
       formData.append("source", source);
       formData.append("isHero", isHero);
+      formData.append("isMid", isMid);
+      formData.append("isBottom", isBottom);
       const response = await EcomAPI.post("/banner/add-banner", formData, {
         headers: {
           "content-type": "multipart/form-data",
@@ -98,14 +104,28 @@ const AddBanner = () => {
               label="Source"
             />
           </Stack>
-          <div>
-            Hero Banner
-            <Checkbox
-              color="success"
-              value={isHero}
-              onChange={handleHeroToggle}
-            />
-          </div>
+          <Stack direction="column" spacing={2}>
+            <span>
+              Hero Banner
+              <Checkbox
+                color="success"
+                value={isHero}
+                onChange={handleToggle}
+              />
+            </span>
+            <span>
+              Mid Banner
+              <Checkbox color="success" value={isMid} onChange={handleToggle} />
+            </span>
+            <span>
+              Bottom Banner
+              <Checkbox
+                color="success"
+                value={isBottom}
+                onChange={handleToggle}
+              />
+            </span>
+          </Stack>
           <input
             onChange={(e) => {
               setImage(e.target.files[0]);

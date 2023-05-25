@@ -1,13 +1,15 @@
-import React from "react";
-import { Stack, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { MenuItem, Stack, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../../redux/actions/index";
 import Cart from "./Cart";
 import wishlist from "../../Images/wishList.svg";
+import SelectOptions from "../Products/SelectOptions";
 
 const Navigation = () => {
   const userData = useSelector((state) => state.authUser);
+  const [open, setOpen] = useState(false);
   const userType = userData?.user?.role;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -43,7 +45,10 @@ const Navigation = () => {
       return (
         <>
           {/* Add sticky top-0 z-10 for sticky banner */}
-          <div className="h-[80px] w-[1440px] bg-neutral-50 flex items-center justify-between m-auto border-b-[1px] ">
+          <div
+            className="h-[70px] w-full bg-neutral-50 flex items-center justify-between m-auto border-b-[1px] "
+            onMouseLeave={() => setOpen(false)}
+          >
             <div className=" left-5">
               <span
                 className="font-logo font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear"
@@ -62,9 +67,21 @@ const Navigation = () => {
                   variant="inherit"
                   component="span"
                   className="text-custom cursor-pointer"
+                  onMouseOver={() => setOpen(true)}
                 >
                   Categories
                 </Typography>
+                <Stack
+                  className={`absolute right-[165px] top-12 bg-neutral-50 z-10 w-[170px] py-2 mt-6 ${
+                    open ? "block" : "hidden"
+                  }`}
+                >
+                  {SelectOptions.map((categories) => (
+                    <MenuItem key={categories.value} value={categories.label}>
+                      {categories.label}
+                    </MenuItem>
+                  ))}
+                </Stack>
                 <div className="flex gap-3 cursor-pointer">
                   <img src={wishlist} alt="" />
                   <Cart />
@@ -80,33 +97,6 @@ const Navigation = () => {
               </Stack>
             </div>
           </div>
-          {/* <AppBar className="bg-stone-800 flex p-1" >
-            <Toolbar>
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ flexGrow: 1 }}
-                className="cursor-pointer"
-                onClick={handleNavigateToHome}
-              >
-                Elaichi kitchen
-              </Typography>
-              <Stack direction="row" spacing={2}>
-                <Button color="inherit">Categories</Button>
-                <Button color="inherit">About</Button>
-                <Button color="inherit">Contact</Button>
-                <Button
-                  color="inherit"
-                  variant="text"
-                  className="flex justify-evenly"
-                  onClick={handleLogOut}
-                >
-                  Log out
-                </Button>
-                <Cart />
-              </Stack>
-            </Toolbar>
-          </AppBar> */}
         </>
       );
     case "admin":
@@ -162,51 +152,6 @@ const Navigation = () => {
             </Stack>
           </div>
         </div>
-        // <AppBar className="bg-stone-800">
-        //   <Toolbar>
-        //     <Typography
-        //       variant="h6"
-        //       component="div"
-        //       sx={{ flexGrow: 1 }}
-        //       onClick={handleBackToDashboard}
-        //       className="cursor-pointer"
-        //     >
-        //       Elaichi kitchen
-        //     </Typography>
-        //     <Stack direction="row" spacing={2}>
-        //       {!window.location.pathname.includes("add-product") && (
-        //         <Button
-        //           onClick={handleBanner}
-        //           color="secondary"
-        //           variant="contained"
-        //           className="cursor-pointer"
-        //         >
-        //           Add Banner
-        //         </Button>
-        //       )}
-        //       {!window.location.pathname.includes("add-product") && (
-        //         <Button
-        //           onClick={handleAddProduct}
-        //           color="inherit"
-        //           variant="contained"
-        //           className="bg-green-900 "
-        //         >
-        //           Add Product
-        //         </Button>
-        //       )}
-        //       {!window.location.pathname.includes("add-product") && (
-        //         <Button
-        //           color="error"
-        //           variant="contained"
-        //           onClick={handleLogOut}
-        //           className=""
-        //         >
-        //           Log Out
-        //         </Button>
-        //       )}
-        //     </Stack>
-        //   </Toolbar>
-        // </AppBar>
       );
     default:
       return (
@@ -248,27 +193,6 @@ const Navigation = () => {
               </Stack>
             </div>
           </div>
-          {/* <AppBar className="bg-stone-800">
-            <Toolbar>
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ flexGrow: 1 }}
-                onClick={() => navigate("/")}
-                className="cursor-pointer"
-              >
-                Elaichi kitchen
-              </Typography>
-              <Stack direction="row" spacing={2}>
-                <Button color="inherit">Categories</Button>
-                <Button color="inherit">About</Button>
-                <Button color="inherit">Contact</Button>
-                <Button color="inherit" variant="text" onClick={handleLogIn}>
-                  Log In
-                </Button>
-              </Stack>
-            </Toolbar>
-          </AppBar> */}
         </>
       );
   }

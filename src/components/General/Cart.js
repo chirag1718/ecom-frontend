@@ -83,7 +83,7 @@ const Cart = () => {
       <span
         // size="small"
         // edge="start"
-      
+
         onClick={() => setIsDrawerOpen(true)}
       >
         {selectedItems.length === 1 ? (
@@ -237,11 +237,12 @@ const Cart = () => {
                 style={{
                   display: "flex",
                   justifyContent: "center",
-                  alignItems: "center",
+                  // alignItems: "center",
+                  marginTop: "70px",
                   height: "100vh",
                 }}
               >
-                <Typography variant="h4" component="span">
+                <Typography variant="h6" component="span">
                   Your Cart is Empty!
                 </Typography>
               </div>

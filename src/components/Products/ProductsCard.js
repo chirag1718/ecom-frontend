@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardMedia } from "@mui/material";
 import EcomAPI from "../../apis/EcomAPI";
+import wishlist from "../../Images/wishList.svg";
+import cart from "../../Images/cart.svg";
 
 // This is a component that provides all products card for the home component
 const ProductsCard = () => {
   let navigate = useNavigate();
   const [selectedProduct, setSelectedProduct] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -30,22 +33,30 @@ const ProductsCard = () => {
         selectedProduct.map((product) => {
           return (
             <Card
-              className="flex flex-col w-40 h-48 mx-2 shadow-lg cursor-pointer transition-all transform hover:scale-105 ease-linear duration-75"
+              className="flex flex-col w-[250px] h-[350px] mx-2 rounded-none "
+              //transition-all transform hover:scale-105 ease-linear duration-75
+
               key={product._id}
-              onClick={() => handleProductSelect(product._id)}
+              variant="outlined"
             >
               <div className="overflow-hidden">
                 <CardMedia
                   component="img"
                   image={product.image.url}
-                  className=" w-40 h-32"
-                  // className=" w-40 h-32 transition-all duration-75 ease-in transform hover:scale-105"
+                  onClick={() => handleProductSelect(product._id)}
+                  className="object-cover w-[250px] h-[350px] cursor-pointer transition-all duration-100 ease-in transform hover:scale-105"
                 />
               </div>
-              <CardContent className="p-2 ">
-                <p className="text-sm">{product.name}</p>
-                <p className="text-xs">₹ {product.price}</p>
-                <p className="text-[10px]">{product.category}</p>
+              <CardContent className="p-2 flex justify-between">
+                <div>
+                  <p className="text-sm">{product.name}</p>
+                  <p className="text-xs">₹ {product.price}</p>
+                  <p className="text-[10px]">{product.category}</p>
+                </div>
+                <div className="space-y-5">
+                  <img src={wishlist} alt="" className="cursor-pointer" />
+                  <img src={cart} alt="" className="cursor-pointer" />
+                </div>
               </CardContent>
             </Card>
           );

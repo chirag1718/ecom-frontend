@@ -11,6 +11,7 @@ module.exports = {
     fontFamily: {
       logo: ["Italiana"],
       poppins: ["Poppins"],
+      highlight: ["Lobster"],
     },
     fontSize: {
       logo: ["32px", "38px"],

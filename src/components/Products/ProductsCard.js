@@ -33,7 +33,7 @@ const ProductsCard = () => {
         selectedProduct.map((product) => {
           return (
             <Card
-              className="flex flex-col w-[250px] h-[350px] mx-2 rounded-none "
+              className="flex flex-col w-[250px] h-[350px] mx-2 rounded-none"
               //transition-all transform hover:scale-105 ease-linear duration-75
 
               key={product._id}

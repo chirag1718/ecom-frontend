@@ -3,7 +3,15 @@ import React, { useState } from "react";
 import EcomAPI from "../../apis/EcomAPI";
 
 // Matreial UI
-import { Button, FormControl, InputAdornment, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputAdornment,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
@@ -18,6 +26,7 @@ const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
 
   const handleRegister = async (e) => {
@@ -36,6 +45,7 @@ const Signup = () => {
       // console.log(response);
     } catch (err) {
       console.log(err.message);
+      setError(err.message);
     }
   };
 
@@ -47,60 +57,90 @@ const Signup = () => {
   // Password Visibility
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <FormControl className="flex items-center justify-center flex-col h-[80vh]">
-      <p className="text-xl font-sans">Enter your Credentials</p>
-
-      {/* First Name */}
-      <TextField
-        label="First Name"
-        className="mb-3"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-      />
-
-      {/* Email */}
-      <TextField
-        label="Email"
-        className="mb-3"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-
-      {/* Password */}
-      <TextField
-        label="Password"
-        className="mb-3 w-[14rem]"
-        type={showPassword ? "text" : "password"}
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment
-              className="cursor-pointer"
-              position="end"
-              onClick={() => setShowPassword(!showPassword)}
+    <div className="flex justify-center items-center text-center h-[80vh]">
+      <Box className="w-[400px] h-[500px] flex justify-center items-center border-[1px] p-3 ">
+        <Stack direction="column font-poppins">
+          <FormControl>
+            <Typography
+              style={{
+                marginBottom: "20px",
+                fontSize: "20px",
+                fontFamily: "Poppins",
+              }}
             >
-              {showPassword ? <VisibilityOff /> : <Visibility />}
-            </InputAdornment>
-          ),
-        }}
-      />
+              Enter your Login Credentials
+            </Typography>
 
-      {/* Register */}
-      <Button
-        variant="outlined"
-        className="w-[14rem] mb-5"
-        endIcon={<PersonAddIcon />}
-        onClick={handleRegister}
-      >
-        Sign In
-      </Button>
+            {/* First Name */}
+            <TextField
+              label="First Name"
+              className="mb-7"
+              value={firstName}
+              onChange={(e) => {
+                setFirstName(e.target.value);
+                setError("");
+              }}
+            />
 
-      {/* Login */}
-      <Button variant="text" onClick={handleLogin} endIcon={<LoginIcon />}>
-        Log In
-      </Button>
-    </FormControl>
+            {/* Email */}
+            <TextField
+              label="Email"
+              className="mb-7"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setError("");
+              }}
+            />
+
+            {/* Password */}
+            <TextField
+              label="Password"
+              className="mb-7"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError("");
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment
+                    className="cursor-pointer"
+                    position="end"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </InputAdornment>
+                ),
+              }}
+            />
+
+            {/* Register */}
+            <Button
+              variant="outlined"
+              className="mb-7"
+              endIcon={<PersonAddIcon />}
+              onClick={handleRegister}
+            >
+              Sign In
+            </Button>
+
+            {/* Login */}
+            <Button
+              variant="text"
+              onClick={handleLogin}
+              endIcon={<LoginIcon />}
+            >
+              Log In
+            </Button>
+            <Typography className="text-red-500 font-poppins">
+              {error ? <>{error}</> : null}
+            </Typography>
+          </FormControl>
+        </Stack>
+      </Box>
+    </div>
   );
 };
 

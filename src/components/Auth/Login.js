@@ -3,7 +3,15 @@ import React, { useState } from "react";
 import EcomAPI from "../../apis/EcomAPI";
 
 // Material UI import
-import { Button, FormControl, InputAdornment, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputAdornment,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 // Material UI icon
 import LoginIcon from "@mui/icons-material/Login";
@@ -23,6 +31,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  // Password visibility
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   // Login button
@@ -39,7 +49,6 @@ const Login = () => {
 
       const res = response.data;
       dispatch(setUser(res));
-
       navigate("/");
     } catch (err) {
       console.log(err.message);
@@ -51,68 +60,80 @@ const Login = () => {
   const handleSignup = () => {
     navigate("/signup");
   };
-
-  // Password visibility
-  const [showPassword, setShowPassword] = useState(false);
-
   return (
-    <FormControl className="flex items-center justify-center flex-col h-[80vh]">
-      <p className="text-xl font-sans mb-5">Enter your Login Credentials</p>
+    <div className="flex justify-center items-center text-center h-[80vh]">
+      <Box className="w-[400px] h-[500px] flex justify-center items-center border-[1px] p-3 ">
+        <Stack direction="column">
+          <FormControl>
+            <Typography
+              style={{
+                marginBottom: "20px",
+                fontSize: "20px",
+                fontFamily: "Poppins",
+              }}
+            >
+              Enter your Login Credentials
+            </Typography>
+            {/* Email */}
+            <TextField
+              label="Email"
+              className="mb-7"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setError("");
+              }}
+            />
 
-      {/* Email */}
-      <TextField
-        label="Email"
-        className="mb-3"
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-          setError("");
-        }}
-        />
+            {/* Password */}
+            <TextField
+              label="Password"
+              type={showPassword ? "text" : "password"}
+              className="mb-7 "
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError("");
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment
+                    className="cursor-pointer"
+                    position="end"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </InputAdornment>
+                ),
+              }}
+            />
+            {/* Login */}
 
-      {/* Password */}
-      <TextField
-        label="Password"
-        type={showPassword ? "text" : "password"}
-        className="mb-7 w-[14rem]"
-        value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-          setError("");
-        }}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment
-              className="cursor-pointer"
-              position="end"
-              onClick={() => setShowPassword(!showPassword)}
-              >
-              {showPassword ? <VisibilityOff /> : <Visibility />}
-            </InputAdornment>
-          ),
-        }}
-      />
-      {/* Login */}
-      <span className="text-red-500 pb-3">{error ? <>{error}</> : null}</span>
-      <Button
-        type="submit"
-        variant="outlined"
-        className="w-[14rem] mb-5"
-        endIcon={<LoginIcon />}
-        onClick={handleLogin}
-        >
-        Log In
-      </Button>
-      {/* Create new account */}
-      <Button
-        variant="text"
-        // className=""
-        onClick={handleSignup}
-        endIcon={<PersonAddIcon />}
-      >
-        Create New Account
-      </Button>
-    </FormControl>
+            <Button
+              type="submit"
+              variant="outlined"
+              className=" mb-7"
+              endIcon={<LoginIcon />}
+              onClick={handleLogin}
+            >
+              Log In
+            </Button>
+            {/* Create new account */}
+            <Button
+              variant="text"
+              // className=""
+              onClick={handleSignup}
+              endIcon={<PersonAddIcon />}
+            >
+              Create New Account
+            </Button>
+            <Typography className="text-red-500 font-poppins">
+              {error ? <>{error}</> : null}
+            </Typography>
+          </FormControl>
+        </Stack>
+      </Box>
+    </div>
   );
 };
 

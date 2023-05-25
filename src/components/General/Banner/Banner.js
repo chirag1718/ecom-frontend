@@ -20,7 +20,12 @@ const Banner = () => {
   // console.log();
   return (
     <div className="h-[400px] w-full">
-      <Carousel cycleNavigation={true} swipe={true} dragable={true}>
+      <Carousel
+        cycleNavigation={true}
+        swipe={true}
+        dragable={true}
+        indicators={false}
+      >
         {selectedBanner &&
           selectedBanner.map((banner) => {
             if (banner.isHero === true) {
@@ -33,6 +38,7 @@ const Banner = () => {
                 />
               );
             }
+            return null;
           })}
       </Carousel>
     </div>

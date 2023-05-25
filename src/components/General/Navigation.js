@@ -51,7 +51,7 @@ const Navigation = () => {
           >
             <div className=" left-5">
               <span
-                className="font-logo font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear"
+                className="font-logo seksi-font font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear"
                 onClick={handleNavigateToHome}
               >
                 Elaichi Kitchen
@@ -66,7 +66,28 @@ const Navigation = () => {
                 <Typography
                   variant="inherit"
                   component="span"
-                  className="text-custom cursor-pointer"
+                  className="text-custom cursor-pointer hover:border-b-2 border-black active:scale-95"
+                >
+                  Best Sellers
+                </Typography>
+                <Typography
+                  variant="inherit"
+                  component="span"
+                  className="text-custom cursor-pointer active:scale-95 hover:border-b-2 border-black "
+                >
+                  New Launches
+                </Typography>
+                <Typography
+                  variant="inherit"
+                  component="span"
+                  className="text-custom cursor-pointer active:scale-95 hover:border-b-2 border-black "
+                >
+                  Combos
+                </Typography>
+                <Typography
+                  variant="inherit"
+                  component="span"
+                  className="text-custom cursor-pointer  active:scale-95 hover:border-b-2 border-black "
                   onMouseOver={() => setOpen(true)}
                 >
                   Categories
@@ -83,13 +104,13 @@ const Navigation = () => {
                   ))}
                 </Stack>
                 <div className="flex gap-3 cursor-pointer">
-                  <img src={wishlist} alt="" />
+                  <img src={wishlist} alt="" className="active:scale-95" />
                   <Cart />
                 </div>
                 <Typography
                   variant="inherit"
                   component="span"
-                  className="text-custom p-1 hover:text-rose-600 border-b-[1px] border-neutral-50 hover:border-b-[1px] hover:border-rose-600 transition-all ease-linear cursor-pointer"
+                  className="text-custom p-1 hover:text-rose-600 border-b-[1px] border-neutral-50 hover:border-b-[2px] hover:border-rose-600 transition-all ease-linear cursor-pointer active:scale-95"
                   onClick={handleLogOut}
                 >
                   Logout
@@ -101,10 +122,10 @@ const Navigation = () => {
       );
     case "admin":
       return (
-        <div className="h-[80px] w-[1440px] bg-neutral-50 flex items-center justify-between m-auto border-b-[1px] ">
+        <div className="h-[80px] w-full bg-neutral-50 flex items-center justify-between m-auto border-b-[1px] ">
           <div className=" left-5">
             <span
-              className="text-neutral-500 font-logo font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear hover:text-black"
+              className="text-neutral-500 font-logo text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear hover:text-black"
               onClick={handleBackToDashboard}
             >
               Elaichi Kitchen
@@ -156,7 +177,7 @@ const Navigation = () => {
     default:
       return (
         <>
-          <div className="h-[80px] w-[1440px] bg-neutral-50 flex items-center justify-between m-auto border-b-[1px]">
+          <div className="h-[80px] w-full bg-neutral-50 flex items-center justify-between m-auto border-b-[1px]">
             <div className=" left-5">
               <span
                 className="font-logo font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear"

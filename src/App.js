@@ -8,7 +8,7 @@ import Navigation from "./components/General/Navigation";
 
 function App() {
   return (
-    <div className="m-auto w-full">
+    <div className="m-auto w-full font-poppins">
       <Router>
         <Navigation />
         <AppRoutes />

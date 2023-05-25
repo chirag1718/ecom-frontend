@@ -88,7 +88,7 @@ const Cart = () => {
       >
         {selectedItems.length === 1 ? (
           <Badge variant="dot" color="secondary">
-            <img src={cart} alt="" />
+            <img src={cart} alt="" className="active:scale-95"/>
           </Badge>
         ) : (
           <img src={cart} alt="" />

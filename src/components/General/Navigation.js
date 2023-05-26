@@ -144,7 +144,7 @@ const Navigation = () => {
                     variant="inherit"
                     component="span"
                     onClick={handleBanner}
-                    className="text-custom p-1 hover:text-green-500 border-b-[1px] border-neutral-50 hover:border-b-[1px] hover:border-green-500 transition-all ease-linear"
+                    className="text-custom p-1 hover:text-green-500 border-b-[1px] border-neutral-50 hover:border-b-[1px] hover:border-green-500"
                   >
                     Add Banner
                   </Typography>
@@ -154,7 +154,7 @@ const Navigation = () => {
                   <Typography
                     variant="inherit"
                     component="span"
-                    className="text-custom p-1 hover:text-green-600 border-b-[1px] border-neutral-50 hover:border-b-[1px] hover:border-green-600 transition-all ease-linear"
+                    className="text-custom p-1 hover:text-green-600 border-b-[1px] border-neutral-50 hover:border-b-[1px] hover:border-green-600"
                     onClick={handleAddProduct}
                   >
                     Add Product
@@ -165,7 +165,7 @@ const Navigation = () => {
                   <Typography
                     variant="inherit"
                     component="span"
-                    className="text-custom p-1 hover:text-rose-600 border-b-[1px] border-neutral-50 hover:border-b-[1px] hover:border-red-600 transition-all ease-linear"
+                    className="text-custom p-1 hover:text-rose-600 border-b-[1px] border-neutral-50 hover:border-b-[1px] hover:border-red-600"
                     onClick={handleLogOut}
                   >
                     Logout
@@ -198,12 +198,45 @@ const Navigation = () => {
                     <Typography
                       variant="inherit"
                       component="span"
-                      className="text-custom"
+                      className="text-custom cursor-pointer hover:border-b-2 hover:border-black"
+                    >
+                      Best Sellers
+                    </Typography>
+                  )}
+                {!window.location.pathname.includes("login") &&
+                  !window.location.pathname.includes("signup") && (
+                    <Typography
+                      variant="inherit"
+                      component="span"
+                      className="text-custom cursor-pointer hover:border-b-2 hover:border-black"
+                    >
+                      New Launches
+                    </Typography>
+                  )}
+                {!window.location.pathname.includes("login") &&
+                  !window.location.pathname.includes("signup") && (
+                    <Typography
+                      variant="inherit"
+                      component="span"
+                      className="text-custom cursor-pointer hover:border-b-2 hover:border-black"
+                    >
+                      Combos
+                    </Typography>
+                  )}
+                {!window.location.pathname.includes("login") &&
+                  !window.location.pathname.includes("signup") && (
+                    <Typography
+                      variant="inherit"
+                      component="span"
+                      className="text-custom cursor-pointer hover:border-b-2 hover:border-black"
                     >
                       Categories
                     </Typography>
                   )}
-
+                {/* <div className="flex items-center gap-3 cursor-pointer"> */}
+                  {/* <FavoriteIcon color="error" className="active:scale-95" /> */}
+                  {/* <Cart /> */}
+                {/* </div> */}
                 <Typography
                   variant="inherit"
                   component="span"

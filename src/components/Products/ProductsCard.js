@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardMedia } from "@mui/material";
 import EcomAPI from "../../apis/EcomAPI";
-import wishlist from "../../Images/wishList.svg";
-import cart from "../../Images/cart.svg";
+import Wishlist from "../utils/Wishlist";
+import CartIcon from "../utils/CartIcon";
 
 // This is a component that provides all products card for the home component
 const ProductsCard = () => {
@@ -47,15 +47,15 @@ const ProductsCard = () => {
                   className="object-cover w-[250px] h-[350px] cursor-pointer transition-all duration-100 ease-in transform hover:scale-105"
                 />
               </div>
-              <CardContent className="p-2 flex justify-between">
+              <CardContent className="p-2 flex justify-between items-center rounded-none">
                 <div>
-                  <p className="text-sm">{product.name}</p>
-                  <p className="text-xs">₹ {product.price}</p>
-                  <p className="text-[10px]">{product.category}</p>
+                  <p className="text-[15px]">{product.name}</p>
+                  <p className="text-[15px]">₹ {product.price}</p>
+                  <p className="text-[15px]">{product.category}</p>
                 </div>
                 <div className="space-y-5">
-                  <img src={wishlist} alt="" className="cursor-pointer" />
-                  <img src={cart} alt="" className="cursor-pointer" />
+                  <Wishlist />
+                  <CartIcon />
                 </div>
               </CardContent>
             </Card>

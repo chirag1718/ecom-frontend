@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EcomAPI from "../../apis/EcomAPI";
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Card, CardContent, CardMedia } from "@mui/material";
+import Wishlist from "../utils/Wishlist";
+import CartIcon from "../utils/CartIcon";
 
 const HeroProduct = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -39,20 +41,26 @@ const HeroProduct = () => {
 
                   key={product._id}
                   variant="outlined"
-                  onClick={() => handleProductSelect(product._id)}
                 >
                   <div className="overflow-hidden">
                     <CardMedia
+                      onClick={() => handleProductSelect(product._id)}
                       component="img"
                       image={product.image.url}
                       className=" w-[250px] h-[350px] transition-all duration-100 ease-in transform hover:scale-105"
                       // className=" w-40 h-32 transition-all duration-75 ease-in transform hover:scale-105"
                     />
                   </div>
-                  <CardContent className="p-2">
-                    <p className="text-sm">{product.name}</p>
-                    <p className="text-xs">₹ {product.price}</p>
-                    <p className="text-[10px]">{product.category}</p>
+                  <CardContent className="p-2 flex justify-between items-center">
+                    <div>
+                      <p className="text-[15px]">{product.name}</p>
+                      <p className="text-[15px]">₹ {product.price}</p>
+                      <p className="text-[15px]">{product.category}</p>
+                    </div>
+                    <div className="space-y-5 justify-center">
+                      <Wishlist />
+                      <CartIcon />
+                    </div>
                   </CardContent>
                 </Card>
               </div>

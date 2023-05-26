@@ -21,6 +21,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useSelector } from "react-redux";
+import CartIcon from "../utils/CartIcon";
 
 const Cart = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -88,7 +89,7 @@ const Cart = () => {
       >
         {selectedItems.length === 1 ? (
           <Badge variant="dot" color="secondary">
-            <img src={cart} alt="" className="active:scale-95"/>
+            <CartIcon />
           </Badge>
         ) : (
           <img src={cart} alt="" />

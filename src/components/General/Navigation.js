@@ -4,8 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../../redux/actions/index";
 import Cart from "./Cart";
-import wishlist from "../../Images/wishList.svg";
 import SelectOptions from "../Products/SelectOptions";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import cart from "../../Images/cart.svg";
 
 const Navigation = () => {
   const userData = useSelector((state) => state.authUser);
@@ -51,7 +52,7 @@ const Navigation = () => {
           >
             <div className=" left-5">
               <span
-                className="font-logo seksi-font font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear"
+                className="font-highlight seksi-font font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear"
                 onClick={handleNavigateToHome}
               >
                 Elaichi Kitchen
@@ -103,8 +104,8 @@ const Navigation = () => {
                     </MenuItem>
                   ))}
                 </Stack>
-                <div className="flex gap-3 cursor-pointer">
-                  <img src={wishlist} alt="" className="active:scale-95" />
+                <div className="flex items-center gap-3 cursor-pointer">
+                  <FavoriteIcon color="error" className="active:scale-95" />
                   <Cart />
                 </div>
                 <Typography

@@ -52,7 +52,7 @@ const Navigation = () => {
           >
             <div className=" left-5">
               <span
-                className="font-highlight seksi-font font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear"
+                className="font-highlight seksi-font font-normal text-logo ml-5 mt-5 cursor-pointer"
                 onClick={handleNavigateToHome}
               >
                 Elaichi Kitchen
@@ -126,7 +126,7 @@ const Navigation = () => {
         <div className="h-[80px] w-full bg-neutral-50 flex items-center justify-between m-auto border-b-[1px] ">
           <div className=" left-5">
             <span
-              className="text-neutral-500 font-logo text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear hover:text-black"
+              className="text-neutral-600 font-highlight text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear hover:text-black"
               onClick={handleBackToDashboard}
             >
               Elaichi Kitchen
@@ -181,7 +181,7 @@ const Navigation = () => {
           <div className="h-[80px] w-full bg-neutral-50 flex items-center justify-between m-auto border-b-[1px]">
             <div className=" left-5">
               <span
-                className="font-logo font-normal text-logo ml-5 mt-5 cursor-pointer transition-all ease-linear"
+                className="font-highlight font-normal text-logo ml-5 mt-5 cursor-pointer"
                 onClick={handleNavigateToHome}
               >
                 Elaichi Kitchen

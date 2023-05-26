@@ -71,7 +71,7 @@ const AddBanner = () => {
   // };
   return (
     <div>
-      <Typography variant="h6" component="div" align="center">
+      <Typography variant="h5" component="div" align="center" className="mt-5">
         Add Banner
       </Typography>
       <form
@@ -80,7 +80,7 @@ const AddBanner = () => {
         encType="multipart/form-data"
         action="/banner/add-banner"
       >
-        <Stack spacing={4} className="mx-4">
+        <Stack spacing={4} className="m-auto mt-5 w-[60vw]">
           <Stack direction="column" spacing={4}>
             {/* Name */}
             <TextField
@@ -135,7 +135,7 @@ const AddBanner = () => {
             type="file"
           />
 
-          <div className="flex justify-center">
+          <div className="flex justify-end">
             <Button type="submit" variant="contained" onClick={handleSubmit}>
               Submit
             </Button>

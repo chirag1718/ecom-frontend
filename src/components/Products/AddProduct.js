@@ -13,7 +13,6 @@ import {
 import { Stack } from "@mui/system";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined";
-import SendIcon from "@mui/icons-material/Send";
 // Api import
 import EcomAPI from "../../apis/EcomAPI";
 
@@ -85,7 +84,7 @@ const AddProduct = () => {
   };
   return (
     <div className="">
-      <Typography variant="h6" component="div" align="center" className="mb-3">
+      <Typography variant="h5" component="div" align="center" className="mt-5">
         Add Product
       </Typography>
       <form
@@ -94,7 +93,7 @@ const AddProduct = () => {
         encType="multipart/form-data"
         action="/product/add-product"
       >
-        <Stack spacing={4} className="mx-4">
+        <Stack spacing={4} className="m-auto mt-5 w-[60vw]">
           <Stack direction="column" spacing={4}>
             {/* Name */}
             <TextField
@@ -200,13 +199,8 @@ const AddProduct = () => {
             className=""
           />
 
-          <div className="flex justify-center">
-            <Button
-              type="submit"
-              variant="contained"
-              onClick={handleSubmit}
-              endIcon={<SendIcon />}
-            >
+          <div className="flex justify-end">
+            <Button type="submit" variant="contained" onClick={handleSubmit}>
               Submit
               <Snackbar
                 message="Product Submitted Succesfully"

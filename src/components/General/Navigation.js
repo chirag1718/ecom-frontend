@@ -47,7 +47,7 @@ const Navigation = () => {
         <>
           {/* Add sticky top-0 z-10 for sticky banner */}
           <div
-            className="h-[70px] w-full bg-neutral-50 flex items-center justify-between m-auto border-b-[1px] "
+            className="h-[70px] w-full bg-neutral-50 flex items-center justify-between m-auto sticky top-0 z-10"
             onMouseLeave={() => setOpen(false)}
           >
             <div className=" left-5">

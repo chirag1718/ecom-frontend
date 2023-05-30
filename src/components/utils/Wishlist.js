@@ -7,7 +7,7 @@ const Wishlist = () => {
   return (
     <div
       onClick={() => setShowWishlist(!showWishlist)}
-      className="active:scale-95 cursor-pointer"
+      className="transition-all ease-in-out duration-200 active:-translate-y-1 active:scale-110 cursor-pointer"
     >
       {showWishlist ? (
         <FavoriteBorderIcon color="error" />

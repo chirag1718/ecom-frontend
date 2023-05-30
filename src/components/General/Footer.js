@@ -22,7 +22,7 @@ const Footer = () => {
     }
   };
   return (
-    <div className="w-full text-[15px] border-t-2 ">
+    <div className="w-full text-[15px] border-t-2">
       <div className="flex justify-between my-10 mx-20">
         <div className="">
           {/* Footer section */}

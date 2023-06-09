@@ -52,7 +52,7 @@ const Navigation = () => {
           >
             <div className=" left-5">
               <span
-                className="font-highlight seksi-font font-normal text-logo ml-5 mt-5 cursor-pointer"
+                className="font-highlight font-normal text-logo ml-5 mt-5 cursor-pointer"
                 onClick={handleNavigateToHome}
               >
                 Elaichi Kitchen
@@ -234,8 +234,8 @@ const Navigation = () => {
                     </Typography>
                   )}
                 {/* <div className="flex items-center gap-3 cursor-pointer"> */}
-                  {/* <FavoriteIcon color="error" className="active:scale-95" /> */}
-                  {/* <Cart /> */}
+                {/* <FavoriteIcon color="error" className="active:scale-95" /> */}
+                {/* <Cart /> */}
                 {/* </div> */}
                 <Typography
                   variant="inherit"

@@ -43,7 +43,7 @@ const Login = () => {
         email,
         password,
       });
-
+      console.log(response);
       localStorage.setItem("user", JSON.stringify(response.data.user));
       localStorage.setItem("auth-token", response.data.token);
 
